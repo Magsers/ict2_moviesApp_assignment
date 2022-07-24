@@ -5,7 +5,10 @@ import React from "react";
 import { getActors } from "../api/tmdb-api";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
-import ActorList from "../components/actorList";
+// import ActorList from "../components/actorList";
+
+import PageTemplate from "../components/templateMoviePage";
+import ReviewForm from "../components/reviewForm";
 
 const ActorsPage = (props) => {
    const { data, error, isLoading, isError }  = useQuery('actors', getActors)
@@ -20,7 +23,10 @@ const ActorsPage = (props) => {
   const actors = data.results;
 
   return (
-    <ActorList actors={actors} />
+    // <ActorList actors={actors} />
+    <PageTemplate actors={actors}>
+    <ReviewForm actors={actors} />
+  </PageTemplate>
 
   );
 };

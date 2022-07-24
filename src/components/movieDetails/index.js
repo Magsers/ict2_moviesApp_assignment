@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -11,6 +11,8 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from '../movieReviews'
+// import { getCredits } from "../../api/tmdb-api";
+import { getSimilar } from "../../api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -44,7 +46,26 @@ const useStyles = makeStyles((theme) => ({
 
 const MovieDetails = ( {movie}) => {
   const classes = useStyles();
+  const [similar, setSimilar] = useState([]);
+  // const [credits, setCredits] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); // New
+  
+  useEffect(() => {
+    getSimilar(movie.id).then((similar) => {
+      setSimilar(similar);
+      // console.log(similar);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // useEffect(() => {
+  //   getCredits(movie.id).then((credits) => {
+  //     setCredits(credits);
+  //     console.log(credits);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
 
   return (
     <>
@@ -55,6 +76,11 @@ const MovieDetails = ( {movie}) => {
       <Typography variant="h6" component="p">
         {movie.overview}
       </Typography>
+      <Typography variant="h5" component="h3">
+        Cast
+      </Typography>
+      {/* <ActorList movie={movie} /> */}
+
       <div className={classes.chipRoot}>
       <Paper component="ul" className={classes.chipSet}>
         <li>
@@ -66,6 +92,27 @@ const MovieDetails = ( {movie}) => {
           </li>
         ))}
       </Paper>
+      {/* <Paper component="ul" className={classes.chipSet}>
+        <li>
+          <Chip label="Cast" className={classes.chipLabel} color="primary" />
+        </li>
+        {credits.map((c) => (
+          <li key={c.id}>
+            <Chip label={c.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper> */}
+      <Paper component="ul" className={classes.chipSet}>
+        <li>
+          <Chip label="Similar Movies" className={classes.chipLabel} color="primary" />
+        </li>
+        {similar.map((s) => (
+          <li key={s.id}>
+            <Chip label={s.title} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>
+
       <Paper component="ul" className={classes.chipSet}>
         <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
         <Chip
@@ -92,6 +139,7 @@ const MovieDetails = ( {movie}) => {
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
       </Drawer>
+      
     </>
   );
 };

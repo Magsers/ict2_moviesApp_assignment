@@ -17,7 +17,6 @@ const TVSeries = (props) => {
   }  
   const tvseries = data.results;
 
-  // These three lines are redundant; we will replace them laterg.
   const favourites = tvseries.filter(m => m.favouurite)
   localStorage.setItem('favourites', JSON.stringify(favourites))
   // const addToFavourites = (movieId) => true 

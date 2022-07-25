@@ -41,31 +41,15 @@ const ActorDetails = ( props) => {
   return (
     <>
       <Typography variant="h5" component="h3">
-        Name
+        Biography
       </Typography>
 
-      <Typography variant="h6" component="p">
-        {actor.name}
+      <Typography component="p">
+        {actor.biography}
       </Typography>
-    
-      {/* <Paper component="ul" className={classes.chipSet}>
-        <li>
-          <Chip label="Genres" className={classes.chipLabel} color="primary" />
-        </li>
-        {movie.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
-          </li>
-        ))}
-      </Paper> */}
-      
+         
       <div className={classes.chipRoot}>
       <Paper component="ul" className={classes.chipSet}>
-        <Chip label={`${actor.character}`} />
-        {/* <Chip
-          icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
-        /> */}
         <Chip
           icon={<StarRate />}
           label={`${actor.popularity}`}

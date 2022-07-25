@@ -10,9 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
-// import TVReviews from '../tvReviews'
-// import { getCredits } from "../../api/tmdb-api";
-// import { getSimilar } from "../../api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {

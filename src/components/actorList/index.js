@@ -22,7 +22,7 @@ export default function MovieActors({ movie }) {
   useEffect(() => {
     getCredits(movie.id).then((credits) => {
         setCredits(credits);
-        console.log(credits);
+        console.log(movie.id);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

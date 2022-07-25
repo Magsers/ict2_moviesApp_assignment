@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -10,9 +10,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
-import MovieReviews from '../movieReviews'
-import { getCredits } from "../../api/tmdb-api";
-import { getSimilar } from "../../api/tmdb-api";
+// import TVReviews from '../tvReviews'
+// import { getCredits } from "../../api/tmdb-api";
+// import { getSimilar } from "../../api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -44,27 +44,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MovieDetails = ( {movie}) => {
+const TVDetails = ( {tv}) => {
   const classes = useStyles();
-  const [similar, setSimilar] = useState([]);
-  const [credits, setCredits] = useState([]);
+//   const [similar, setSimilar] = useState([]);
+  // const [credits, setCredits] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   
-  useEffect(() => {
-    getSimilar(movie.id).then((similar) => {
-      setSimilar(similar);
-      // console.log(similar);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+//   useEffect(() => {
+//     getSimilar(movie.id).then((similar) => {
+//       setSimilar(similar);
+//       // console.log(similar);
+//     });
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   }, []);
 
-  useEffect(() => {
-    getCredits(movie.id).then((credits) => {
-      setCredits(credits);
-      console.log(movie.id);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getCredits(movie.id).then((credits) => {
+  //     setCredits(credits);
+  //     console.log(credits);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
 
   return (
@@ -74,65 +74,44 @@ const MovieDetails = ( {movie}) => {
       </Typography>
 
       <Typography variant="h6" component="p">
-        {movie.overview}
+        {tv.overview}
       </Typography>
-      <Typography variant="h5" component="h3">
-        Cast
-      </Typography>
-      
       <div className={classes.chipRoot}>
-
-      {/* Genres */}
       <Paper component="ul" className={classes.chipSet}>
         <li>
           <Chip label="Genres" className={classes.chipLabel} color="primary" />
         </li>
-        {movie.genres.map((g) => (
+        {tv.genres.map((g) => (
           <li key={g.name}>
             <Chip label={g.name} className={classes.chip} />
           </li>
         ))}
       </Paper>
-
-      {/* Cast */}
-      <Paper component="ul" className={classes.chipSet}>
+      {/* <Paper component="ul" className={classes.chipSet}>
         <li>
-          <Chip label="Cast" className={classes.chipLabel} color="primary" />
-        </li>
-        {credits.map((c) => (
-          <li key={c.id}>
-            <Chip label={c.name} className={classes.chip} />
-          </li>
-        ))}
-      </Paper>
-
-      {/* Similar Movies */}
-      <Paper component="ul" className={classes.chipSet}>
-        <li>
-          <Chip label="Similar Movies" className={classes.chipLabel} color="primary" />
+          <Chip label="Similar TV Series" className={classes.chipLabel} color="primary" />
         </li>
         {similar.map((s) => (
           <li key={s.id}>
             <Chip label={s.title} className={classes.chip} />
           </li>
         ))}
-      </Paper>
+      </Paper> */}
 
       <Paper component="ul" className={classes.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${movie.runtime} min.`} />
+        <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
-          label={`${movie.revenue.toLocaleString()}`}
+          label={`${tv.revenue.toLocaleString()}`}
         />
         <Chip
           icon={<StarRate />}
-          label={`${movie.vote_average} (${movie.vote_count}`}
+          label={`${tv.vote_average} (${tv.vote_count}`}
         />
-        <Chip label={`Released: ${movie.release_date}`} />
+        <Chip label={`Released: ${tv.release_date}`} />
       </Paper>
       </div>
       
-      {/* Reviews */}
       <Fab    
         color="secondary"
         variant="extended"
@@ -143,10 +122,10 @@ const MovieDetails = ( {movie}) => {
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        <MovieReviews movie={movie} />
+        {/* <TVSeriesReviews tv={tv} /> */}
       </Drawer>
       
     </>
   );
 };
-export default  MovieDetails ;
+export default  TVDetails ;

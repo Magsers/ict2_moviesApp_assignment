@@ -118,7 +118,7 @@ export const getTVSeries = () => {
   });
 };
 
-export const getCredits = (id) => {
+export const getCast = (id) => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
   )

@@ -11,7 +11,7 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from '../movieReviews'
-import { getCredits } from "../../api/tmdb-api";
+import { getCast } from "../../api/tmdb-api";
 import { getSimilar } from "../../api/tmdb-api";
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme) => ({
 const MovieDetails = ( {movie}) => {
   const classes = useStyles();
   const [similar, setSimilar] = useState([]);
-  const [credits, setCredits] = useState([]);
+  const [cast, setCast] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   
   useEffect(() => {
@@ -59,9 +59,8 @@ const MovieDetails = ( {movie}) => {
   }, []);
 
   useEffect(() => {
-    getCredits(movie.id).then((credits) => {
-      setCredits(credits);
-      console.log(movie.id);
+    getCast(movie.id).then((cast) => {
+      setCast(cast);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -99,7 +98,7 @@ const MovieDetails = ( {movie}) => {
         <li>
           <Chip label="Cast" className={classes.chipLabel} color="primary" />
         </li>
-        {credits.map((c) => (
+        {cast.map((c) => (
           <li key={c.id}>
             <Chip label={c.name} className={classes.chip} />
           </li>

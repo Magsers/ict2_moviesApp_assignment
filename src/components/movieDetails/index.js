@@ -13,6 +13,7 @@ import Drawer from "@material-ui/core/Drawer";
 import MovieReviews from '../movieReviews'
 import { getCast } from "../../api/tmdb-api";
 import { getSimilar } from "../../api/tmdb-api";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -75,9 +76,6 @@ const MovieDetails = ( {movie}) => {
       <Typography variant="h6" component="p">
         {movie.overview}
       </Typography>
-      <Typography variant="h5" component="h3">
-        Cast
-      </Typography>
       
       <div className={classes.chipRoot}>
 
@@ -98,10 +96,11 @@ const MovieDetails = ( {movie}) => {
         <li>
           <Chip label="Cast" className={classes.chipLabel} color="primary" />
         </li>
-        {cast.map((c) => (
+        
+          {cast.map((c) => (
           <li key={c.id}>
-            <Chip label={c.name} className={classes.chip} />
-          </li>
+            <Link to={`/cast/${c.id}`}> <Chip label={c.name} className={classes.chip} /></Link>
+          </li> 
         ))}
       </Paper>
 

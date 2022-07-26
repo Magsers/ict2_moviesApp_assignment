@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import TVSeriesPage from "./pages/tvSeriesPage";
-import TVPage from "./pages/tvSeriesDetailsPage";
+import TVDetailsPage from "./pages/tvSeriesDetailsPage";
 import CastPage from "./pages/castPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -34,7 +34,7 @@ const App = () => {
           <Routes>
             <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/tvseries/:id" element={<TVPage />} />
+            <Route path="/tvseries/:id" element={<TVDetailsPage />} />
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/reviews/:id" element={<MovieReviewPage />} />

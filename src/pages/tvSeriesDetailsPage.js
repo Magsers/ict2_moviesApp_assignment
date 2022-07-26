@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import TVDetails from "../components/tvSeriesDetails";
-import PageTemplate from "../components/templateMoviePage";
+import PageTemplate from "../components/templateTVPage";
 import { getTV } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
@@ -30,7 +30,7 @@ const TVDetailsPage = () => {
           </PageTemplate>
         </>
       ) : (
-        <p>Waiting for tv details</p>
+        <p>Waiting for TV Series details</p>
       )}
     </>
   );

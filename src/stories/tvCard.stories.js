@@ -3,7 +3,7 @@ import TVCard from "../components/tvCard";
 import SampleTV from "./sampleTVData";
 
 export default {
-  title: "Home Page/TVCard",
+  title: "TV Details Page/TVCard",
   component: TVCard,
 };
 

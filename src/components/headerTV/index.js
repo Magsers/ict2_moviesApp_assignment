@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import HomeIcon from "@material-ui/icons/Home";
+// import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,11 +32,7 @@ const TVHeader = (props) => {
 
       <Typography variant="h4" component="h3">
         {tv.name}
-        {/* <a href={tv.homepage}>
-          <HomeIcon color="primary" />
-        </a> */}
         <br />
-        {/* <span className={classes.tagLine}>{`   "${tv.tagline}"`} </span> */}
       </Typography>
       <IconButton aria-label="go forward">
         <ArrowForwardIcon color="primary" fontSize="large" />

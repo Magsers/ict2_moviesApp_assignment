@@ -1,6 +1,6 @@
 import React from "react";
 import ActorDetails from "../components/actorDetails";
-import SampleActor from "./sampleData";
+import SampleActor from "./sampleTVData";
 
 export default {
   title: "Actor Page/ActorDetails",

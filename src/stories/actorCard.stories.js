@@ -1,6 +1,6 @@
 import React from "react";
 import ActorCard from "../components/actorCard";
-import SampleActor from "./sampleData";
+import SampleActor from "./sampleActorData";
 
 export default {
   title: "Actor Page/ActorCard",

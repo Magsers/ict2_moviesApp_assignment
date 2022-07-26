@@ -26,7 +26,7 @@ export default function TVCard(props) {
   const tv = props.tv;
   return (
     <Card className={classes.card}>
-      <CardHeader className={classes.header} title={tv.title} />
+      <CardHeader className={classes.header} title={tv.name} />
       <CardMedia
         className={classes.media}
         image={

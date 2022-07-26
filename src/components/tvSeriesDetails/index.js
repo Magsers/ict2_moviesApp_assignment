@@ -41,8 +41,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TVDetails = ( {tv}) => {
+const TVDetails = ( props ) => {
   const classes = useStyles();
+  const tv = props.tv
 //   const [similar, setSimilar] = useState([]);
   // const [credits, setCredits] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); // New
@@ -74,7 +75,7 @@ const TVDetails = ( {tv}) => {
         {tv.overview}
       </Typography>
       <div className={classes.chipRoot}>
-      <Paper component="ul" className={classes.chipSet}>
+      {/* <Paper component="ul" className={classes.chipSet}>
         <li>
           <Chip label="Genres" className={classes.chipLabel} color="primary" />
         </li>
@@ -83,7 +84,7 @@ const TVDetails = ( {tv}) => {
             <Chip label={g.name} className={classes.chip} />
           </li>
         ))}
-      </Paper>
+      </Paper> */}
       {/* <Paper component="ul" className={classes.chipSet}>
         <li>
           <Chip label="Similar TV Series" className={classes.chipLabel} color="primary" />
@@ -96,11 +97,11 @@ const TVDetails = ( {tv}) => {
       </Paper> */}
 
       <Paper component="ul" className={classes.chipSet}>
-        <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
+        {/* <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
         <Chip
           icon={<MonetizationIcon />}
           label={`${tv.revenue.toLocaleString()}`}
-        />
+        /> */}
         <Chip
           icon={<StarRate />}
           label={`${tv.vote_average} (${tv.vote_count}`}

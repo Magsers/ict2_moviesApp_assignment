@@ -1,6 +1,6 @@
 import React from "react";
 import MovieList from "../components/movieList";
-import SampleMovie from "./sampleData";
+import SampleMovie from "./sampleMovieData";
 import { MemoryRouter } from "react-router";
 import { action } from "@storybook/addon-actions";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";

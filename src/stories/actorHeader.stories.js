@@ -1,6 +1,6 @@
 import React from "react";
 import ActorHeader from "../components/headerActor";
-import SampleActor from "./sampleData";
+import SampleActor from "./sampleActorData";
 
 export default {
   title: "Actor Page/ActorHeader",

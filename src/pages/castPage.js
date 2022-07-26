@@ -1,40 +1,27 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import ActorDetails from "../components/actorDetails";
-import PageTemplate from "../components/templateCastPage";
-// import useMovie from "../hooks/useMovie";   Redundant
-import { getActor } from '../api/tmdb-api'
-import { useQuery } from "react-query";
+import PageTemplate from '../components/templateCastListPage'
+import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
+import { getCast } from "../api/tmdb-api";
 
-const CastPage = () => {
-  const { id } = useParams();
-  const { data: actor, error, isLoading, isError } = useQuery(
-    ["actor", { id: id }],
-    getActor
-  );
+const CastPage = (props) => {
+  const { data, error, isLoading, isError }  = useQuery('cast', getCast)
 
   if (isLoading) {
-    return <Spinner />;
+    return <Spinner />
   }
 
   if (isError) {
-    return <h1>{error.message}</h1>;
-  }
+    return <h1>{error.message}</h1>
+  }  
+  const cast = data.results;
 
   return (
-    <>
-      {actor ? (
-        <>
-          <PageTemplate actor={actor}>
-            <ActorDetails actor={actor} />
-          </PageTemplate>
-        </>
-      ) : (
-        <p>Waiting for Actor details</p>
-      )}
-    </>
-  );
+    <PageTemplate
+      title="Cast"
+      cast={cast}
+    />
+);
 };
 
 export default CastPage;

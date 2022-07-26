@@ -99,7 +99,7 @@ const MovieDetails = ( {movie}) => {
         
           {cast.map((c) => (
           <li key={c.id}>
-            <Link to={`/cast/${c.id}`}> <Chip label={c.name} className={classes.chip} /></Link>
+            <Link to={`/actor/${c.id}`}> <Chip label={c.name} className={classes.chip} /></Link>
           </li> 
         ))}
       </Paper>

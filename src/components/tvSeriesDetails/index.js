@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 // import AccessTimeIcon from "@material-ui/icons/AccessTime";
@@ -10,6 +10,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
+import { getTVCast } from "../../api/tmdb-api";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   chipRoot: {
@@ -44,26 +46,17 @@ const useStyles = makeStyles((theme) => ({
 const TVDetails = ( props ) => {
   const classes = useStyles();
   const tv = props.tv
+  const [cast, setCast] = useState([]);
 //   const [similar, setSimilar] = useState([]);
   // const [credits, setCredits] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); // New
   
-//   useEffect(() => {
-//     getSimilar(movie.id).then((similar) => {
-//       setSimilar(similar);
-//       // console.log(similar);
-//     });
-//     // eslint-disable-next-line react-hooks/exhaustive-deps
-//   }, []);
-
-  // useEffect(() => {
-  //   getCredits(movie.id).then((credits) => {
-  //     setCredits(credits);
-  //     console.log(credits);
-  //   });
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
-
+useEffect(() => {
+  getTVCast(tv.id).then((cast) => {
+      setCast(cast);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
@@ -75,16 +68,20 @@ const TVDetails = ( props ) => {
         {tv.overview}
       </Typography>
       <div className={classes.chipRoot}>
-      {/* <Paper component="ul" className={classes.chipSet}>
+
+    {/* Cast */}
+    <Paper component="ul" className={classes.chipSet}>
         <li>
-          <Chip label="Genres" className={classes.chipLabel} color="primary" />
+          <Chip label="Cast" className={classes.chipLabel} color="primary" />
         </li>
-        {tv.genres.map((g) => (
-          <li key={g.name}>
-            <Chip label={g.name} className={classes.chip} />
-          </li>
+        
+          {cast.map((c) => (
+          <li key={c.id}>
+            <Link to={`/actor/${c.id}`}> <Chip label={c.name} className={classes.chip} /></Link>
+          </li> 
         ))}
-      </Paper> */}
+      </Paper>
+
       {/* <Paper component="ul" className={classes.chipSet}>
         <li>
           <Chip label="Similar TV Series" className={classes.chipLabel} color="primary" />
@@ -97,11 +94,6 @@ const TVDetails = ( props ) => {
       </Paper> */}
 
       <Paper component="ul" className={classes.chipSet}>
-        {/* <Chip icon={<AccessTimeIcon />} label={`${tv.runtime} min.`} />
-        <Chip
-          icon={<MonetizationIcon />}
-          label={`${tv.revenue.toLocaleString()}`}
-        /> */}
         <Chip
           icon={<StarRate />}
           label={`${tv.vote_average} (${tv.vote_count}`}

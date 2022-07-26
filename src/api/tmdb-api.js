@@ -146,6 +146,17 @@ export const getCast = (id) => {
     });
 };
 
+export const getTVCast = (id) => {
+  return fetch(
+    `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  )
+    .then((res) => res.json())
+    .then((json) => {
+      // console.log(json.cast);
+      return json.cast;
+    });
+};
+
 export const getActor = (args) => {
   // console.log(args)
   const [, idPart] = args.queryKey;

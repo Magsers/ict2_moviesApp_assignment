@@ -1,27 +1,48 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PageTemplate from '../components/templateCastListPage'
-import { useQuery } from 'react-query'
-import Spinner from '../components/spinner'
 import { getCast } from "../api/tmdb-api";
+import { useParams } from "react-router-dom";
 
-const CastPage = (props) => {
-  const { data, error, isLoading, isError }  = useQuery('cast', getCast)
+const CastPage = () => {
+  const { id } = useParams();
+  console.log(id)
+  const [cast, setCast] = useState([]);
 
-  if (isLoading) {
-    return <Spinner />
-  }
-
-  if (isError) {
-    return <h1>{error.message}</h1>
-  }  
-  const cast = data.results;
+  useEffect(() => {
+    getCast(id).then((cast) => {
+      setCast(cast);
+      console.log(cast)
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, );
 
   return (
     <PageTemplate
       title="Cast"
       cast={cast}
+      // action={(movie) => {
+      //   return <AddToFavouritesIcon movie={movie} />
+      // }}
     />
 );
 };
+
+//  return (
+//     <>
+    
+//     {cast ? (
+//       <>
+//        <PageTemplate>
+//        <h1> Hello world </h1>
+//         title="Cast"
+//         cast={[cast]}
+//         </PageTemplate>
+//       </>
+//     ) : (
+//         <p>Waiting for API data</p>
+//       )}
+//     </>
+//   );
+// };
 
 export default CastPage;

@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieDetails = ( {movie}) => {
+  // console.log(movie.id)
   const classes = useStyles();
   const [similar, setSimilar] = useState([]);
   const [cast, setCast] = useState([]);
@@ -54,7 +55,6 @@ const MovieDetails = ( {movie}) => {
   useEffect(() => {
     getSimilar(movie.id).then((similar) => {
       setSimilar(similar);
-      // console.log(similar);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -94,7 +94,9 @@ const MovieDetails = ( {movie}) => {
       {/* Cast */}
       <Paper component="ul" className={classes.chipSet}>
         <li>
+        <Link to={`/cast/${movie.id}`}>
           <Chip label="Cast" className={classes.chipLabel} color="primary" />
+        </Link>
         </li>
         
           {cast.map((c) => (

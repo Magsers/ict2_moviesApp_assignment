@@ -20,16 +20,17 @@ const useStyles = makeStyles((theme) =>  ({
   },
 }));
 
-function CastListPageTemplate({ cast, title, action }) {
+function CastListPageTemplate({ cast, title }) {
+  console.log(title)
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
 
-  let displayedActors = cast
-    .filter((m) => {
-      return m.title.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
-    })
+  // let displayedActors = cast
+    // .filter((m) => {
+    //   return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
+    // })
     // .filter((m) => {
     //   return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     // });
@@ -46,7 +47,7 @@ function CastListPageTemplate({ cast, title, action }) {
         <Header title={title} />
       </Grid>
       <Grid item container spacing={5}>
-      <CastList action={action} cast={displayedActors} />
+      <CastList cast={cast} />
       </Grid>
     </Grid>
     <Fab

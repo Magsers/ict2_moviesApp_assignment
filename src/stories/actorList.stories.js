@@ -2,7 +2,7 @@ import React from "react";
 import CastList from "../components/actorList";
 import SampleActor from "./sampleActorData";
 import { MemoryRouter } from "react-router";
-import { action } from "@storybook/addon-actions";
+// import { action } from "@storybook/addon-actions";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";
 import Grid from "@material-ui/core/Grid";
 

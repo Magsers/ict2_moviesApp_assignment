@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
-// import AccessTimeIcon from "@material-ui/icons/AccessTime";
-// import MonetizationIcon from "@material-ui/icons/MonetizationOn";
 import StarRate from "@material-ui/icons/StarRate";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-// New
 import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
@@ -36,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   chipLabel: {
     margin: theme.spacing(0.5),
   },
-  fab: {  //New
+  fab: {  
     position: "fixed",
     top: theme.spacing(15),
     right: theme.spacing(2),
@@ -47,9 +44,7 @@ const TVDetails = ( props ) => {
   const classes = useStyles();
   const tv = props.tv
   const [cast, setCast] = useState([]);
-//   const [similar, setSimilar] = useState([]);
-  // const [credits, setCredits] = useState([]);
-  const [drawerOpen, setDrawerOpen] = useState(false); // New
+  const [drawerOpen, setDrawerOpen] = useState(false); 
   
 useEffect(() => {
   getTVCast(tv.id).then((cast) => {
@@ -69,10 +64,24 @@ useEffect(() => {
       </Typography>
       <div className={classes.chipRoot}>
 
+    {/* Genres */}
+      <Paper component="ul" className={classes.chipSet}>
+        <li>
+          <Chip label="Genres" className={classes.chipLabel} color="primary" />
+        </li>
+        {tv.genres.map((g) => (
+          <li key={g.name}>
+            <Chip label={g.name} className={classes.chip} />
+          </li>
+        ))}
+      </Paper>        
+
     {/* Cast */}
     <Paper component="ul" className={classes.chipSet}>
         <li>
-          <Chip label="Cast" className={classes.chipLabel} color="primary" />
+        <Link to={`/cast/${tv.id}/${"tv"}`}>
+          <Chip label="Full Cast" className={classes.chipLabel} color="primary" />
+        </Link>
         </li>
         
           {cast.map((c) => (
@@ -81,17 +90,6 @@ useEffect(() => {
           </li> 
         ))}
       </Paper>
-
-      {/* <Paper component="ul" className={classes.chipSet}>
-        <li>
-          <Chip label="Similar TV Series" className={classes.chipLabel} color="primary" />
-        </li>
-        {similar.map((s) => (
-          <li key={s.id}>
-            <Chip label={s.title} className={classes.chip} />
-          </li>
-        ))}
-      </Paper> */}
 
       <Paper component="ul" className={classes.chipSet}>
         <Chip

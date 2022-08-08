@@ -135,9 +135,16 @@ export const getTVImages = ({ queryKey }) => {
  });
 };
 
-export const getCast = (id) => {
+export const getCast = (id, showStr) => {
+  let show;
+  if (showStr === "tv") {
+    show = "tv"; 
+  } else {
+    show = "movie";
+  }
+
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/${show}/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
   )
     .then((res) => res.json())
     .then((json) => {

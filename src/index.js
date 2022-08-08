@@ -44,7 +44,7 @@ const App = () => {
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="/reviews/:id" element={<MovieReviewPage />} />
             <Route path="/actor/:id" element={<ActorPage />} />
-            <Route path="/cast/:id" element={<CastPage />} />
+            <Route path="/cast/:id/:str" element={<CastPage />} />
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
             <Route path="/tvseries" element={<TVSeriesPage />} />

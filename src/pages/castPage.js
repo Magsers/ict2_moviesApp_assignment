@@ -4,11 +4,11 @@ import { getCast } from "../api/tmdb-api";
 import { useParams } from "react-router-dom";
 
 const CastPage = () => {
-  const { id } = useParams();
+  const { id, str } = useParams();
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
-    getCast(id).then((cast) => {
+    getCast(id, str).then((cast) => {
       setCast(cast);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

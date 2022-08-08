@@ -5,13 +5,11 @@ import { useParams } from "react-router-dom";
 
 const CastPage = () => {
   const { id } = useParams();
-  console.log(id)
   const [cast, setCast] = useState([]);
 
   useEffect(() => {
     getCast(id).then((cast) => {
       setCast(cast);
-      console.log(cast)
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, );
@@ -20,9 +18,6 @@ const CastPage = () => {
     <PageTemplate
       title="Cast"
       cast={cast}
-      // action={(movie) => {
-      //   return <AddToFavouritesIcon movie={movie} />
-      // }}
     />
 );
 };

@@ -43,7 +43,6 @@ const ActorDetails = ( props) => {
       <Typography variant="h5" component="h3">
         Biography
       </Typography>
-
       <Typography component="p">
         {actor.biography}
       </Typography>

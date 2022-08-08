@@ -21,19 +21,10 @@ const useStyles = makeStyles((theme) =>  ({
 }));
 
 function CastListPageTemplate({ cast, title }) {
-  console.log(title)
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [drawerOpen, setDrawerOpen] = useState(false);
-
-  // let displayedActors = cast
-    // .filter((m) => {
-    //   return m.name.toLowerCase().search(titleFilter.toLowerCase()) !== -1;
-    // })
-    // .filter((m) => {
-    //   return genreId > 0 ? m.genre_ids.includes(genreId) : true;
-    // });
 
   const handleChange = (type, value) => {
     if (type === "name") setTitleFilter(value);

@@ -20,7 +20,7 @@ export const Basic = () => {
     <TVCard
       tv={SampleTV}
       action={(tv) => <AddToFavoritesIcon tv={tv} />}
-      taging={(TV) => null}
+      taging={(tv) => null}
     />
   );
 };

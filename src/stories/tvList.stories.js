@@ -3,7 +3,7 @@ import TVList from "../components/tvList";
 import SampleTV from "./sampleTVData";
 import { MemoryRouter } from "react-router";
 
-import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";
+import AddToTVFavoritesIcon from "../components/cardIcons/addToTVFavourites";
 import Grid from "@material-ui/core/Grid";
 import TVContextProvider from "../contexts/tvContext";
 
@@ -17,7 +17,7 @@ export default {
 };
 
 export const Basic = () => {
-  const tvSeries = [
+  const tvseries = [
     { ...SampleTV, id: 1 },
     { ...SampleTV, id: 2 },
     { ...SampleTV, id: 3 },
@@ -27,8 +27,8 @@ export const Basic = () => {
   return (
     <Grid container spacing={5}>
       <TVList
-        tvSeries={tvSeries}
-        action={(tv) => <AddToFavoritesIcon tv={tv} />}
+        tvseries={tvseries}
+        action={(tv) => <AddToTVFavoritesIcon tv={tv} />}
       />
     </Grid>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,11 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-// import { TVContext } from "../../contexts/tvContext";
+import { TVContext } from "../../contexts/tvContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -24,14 +24,22 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TVCard(props) {
+export default function TVCard({ tv, action }) {
   const classes = useStyles();
-  const tv = props.tv;
+  const { tvFavourites } = useContext(TVContext);
+  const { mustWatch } = useContext(TVContext);
 
-  const handleAddToFavourite = (e) => {
-    e.preventDefault();
-    props.selectFavourite(tv.id);
-  };
+ if (tvFavourites.find((id) => id === tv.id)) {
+    tv.favourite = true;
+  } else {
+    tv.favourite = false
+  }
+
+  if (mustWatch.find((id) => id === tv.id)) {
+    tv.mustWatchtv = true;
+  } else {
+    tv.mustWatchtv = false
+  }
 
   return (
     <Card className={classes.card}>
@@ -46,7 +54,7 @@ export default function TVCard(props) {
       }
       title={
         <Typography variant="h5" component="p">
-          {tv.title}{" "}
+          {tv.name}{" "}
         </Typography>
       }
     />
@@ -75,9 +83,7 @@ export default function TVCard(props) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      <IconButton aria-label="add to favourites" onClick={handleAddToFavourite}>
-        <FavoriteIcon color="primary" fontSize="large" />
-    </IconButton>
+      {action(tv)}
         <Link to={`/tvseries/${tv.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

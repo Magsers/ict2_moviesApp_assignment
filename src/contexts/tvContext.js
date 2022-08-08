@@ -9,7 +9,7 @@ const TVContextProvider = (props) => {
   const [tvFavourites, setFavourites] = useState([]);
   const [mustWatch, setMustWatch] = useState([]);
 
-  const addToFavourites = (tv) => {
+  const addToTVFavourites = (tv) => {
     if (!tvFavourites.includes(tv.id)) {
       let newFavourites = [...tvFavourites, tv.id];
       setFavourites(newFavourites);
@@ -27,7 +27,7 @@ const TVContextProvider = (props) => {
     setMyReviews( {...myReviews, [tv.id]: review } )
   };
 
-  const removeFromFavourites = (tv) => {
+  const removeFromTVFavourites = (tv) => {
     setFavourites(tvFavourites.filter((mId) => mId !== tv.id));
   };
 
@@ -35,8 +35,8 @@ const TVContextProvider = (props) => {
     <TVContext.Provider
       value={{
         tvFavourites,
-        addToFavourites,
-        removeFromFavourites,
+        addToTVFavourites,
+        removeFromTVFavourites,
         mustWatch,
         addToMustWatch,
         addReview,

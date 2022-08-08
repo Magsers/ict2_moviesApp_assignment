@@ -27,7 +27,7 @@ const FavouritesTVPage = () => {
     return <Spinner />;
   }
 
-  const tvSeries = favouriteTVQueries.map((q) => {
+  const tvseries = favouriteTVQueries.map((q) => {
     q.data.genre_ids = q.data.genres.map((g) => g.id);
     return q.data;
   });
@@ -37,7 +37,7 @@ const FavouritesTVPage = () => {
   return (
     <PageTemplate
       title="Favourite TV Series"
-      tvSeries={tvSeries}
+      tvseries={tvseries}
       action={(tv) => {
         return (
           <>

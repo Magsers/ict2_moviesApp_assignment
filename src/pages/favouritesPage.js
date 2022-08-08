@@ -70,7 +70,7 @@ const FavouritesPage = () => {
           return (
             <>
               <RemoveFromFavourites tv={tv} />
-              <WriteReview tv={tv} />
+              {/* <WriteReview tv={tv} /> */}
             </>
           );
         } } /></>

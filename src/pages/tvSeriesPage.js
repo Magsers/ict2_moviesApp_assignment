@@ -3,7 +3,7 @@ import PageTemplate from "../components/templateTVListPage";
 import { useQuery } from 'react-query'
 import Spinner from '../components/spinner'
 import {getTVSeries} from '../api/tmdb-api'
-import AddToFavouritesIcon from '../components/cardIcons/addToFavourites'
+import AddToTVFavouritesIcon from '../components/cardIcons/addToTVFavourites'
 
 const TVSeries = (props) => {
   const {  data, error, isLoading, isError }  = useQuery('tv', getTVSeries)
@@ -17,8 +17,8 @@ const TVSeries = (props) => {
   }  
   const tvseries = data.results;
 
-  const favourites = tvseries.filter(m => m.favouurite)
-  localStorage.setItem('favourites', JSON.stringify(favourites))
+  const tvFavourites = tvseries.filter(m => m.favouurite)
+  localStorage.setItem('tvFavourites', JSON.stringify(tvFavourites))
   // const addToFavourites = (movieId) => true 
 
   return (
@@ -26,7 +26,7 @@ const TVSeries = (props) => {
       title="Discover TV Series"
       tvseries={tvseries}
       action={(tv) => {
-        return <AddToFavouritesIcon tv={tv} />
+        return <AddToTVFavouritesIcon tv={tv} />
       }}
     />
 );

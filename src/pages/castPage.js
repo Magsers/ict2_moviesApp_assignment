@@ -27,22 +27,5 @@ const CastPage = () => {
 );
 };
 
-//  return (
-//     <>
-    
-//     {cast ? (
-//       <>
-//        <PageTemplate>
-//        <h1> Hello world </h1>
-//         title="Cast"
-//         cast={[cast]}
-//         </PageTemplate>
-//       </>
-//     ) : (
-//         <p>Waiting for API data</p>
-//       )}
-//     </>
-//   );
-// };
 
 export default CastPage;

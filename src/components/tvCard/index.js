@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,9 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-import IconButton from "@material-ui/core/IconButton";
+// import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
+import Avatar from "@material-ui/core/Avatar";
+import { TVContext } from "../../contexts/tvContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -22,12 +24,39 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TVCard(props) {
+export default function TVCard( tv, action ) {
   const classes = useStyles();
-  const tv = props.tv;
+  const { tvFavourites } = useContext(TVContext);
+
+  if (tvFavourites.find((id) => id === tv.id)) {
+    tv.fav = true;
+  } else {
+    tv.fav = false
+  }
+
+  // if (mustWatch.find((id) => id === tv.id)) {
+  //   mustwatchTV = true;
+  // } else {
+  //   mustwatchTV = false
+  // }
+
   return (
     <Card className={classes.card}>
-      <CardHeader className={classes.header} title={tv.name} />
+     <CardHeader
+      className={classes.header}
+      avatar={
+        tv.fav ? (
+          <Avatar className={classes.avatar}>
+            <FavoriteIcon />
+          </Avatar>
+        ) : null
+      }
+      title={
+        <Typography variant="h5" component="p">
+          {tv.title}{" "}
+        </Typography>
+      }
+    />
       <CardMedia
         className={classes.media}
         image={
@@ -53,9 +82,7 @@ export default function TVCard(props) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={null}>
-          <FavoriteIcon color="primary" fontSize="large" />
-        </IconButton>
+      {action(tv)}
         <Link to={`/tvseries/${tv.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

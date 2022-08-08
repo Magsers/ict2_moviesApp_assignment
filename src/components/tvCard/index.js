@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -10,11 +10,11 @@ import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import CalendarIcon from "@material-ui/icons/CalendarTodayTwoTone";
 import StarRateIcon from "@material-ui/icons/StarRate";
-// import IconButton from "@material-ui/core/IconButton";
+import IconButton from "@material-ui/core/IconButton";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
-import { TVContext } from "../../contexts/tvContext";
+// import { TVContext } from "../../contexts/tvContext";
 
 const useStyles = makeStyles({
   card: { maxWidth: 345 },
@@ -24,28 +24,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function TVCard( tv, action ) {
+export default function TVCard(props) {
   const classes = useStyles();
-  const { tvFavourites } = useContext(TVContext);
+  const tv = props.tv;
 
-  if (tvFavourites.find((id) => id === tv.id)) {
-    tv.fav = true;
-  } else {
-    tv.fav = false
-  }
-
-  // if (mustWatch.find((id) => id === tv.id)) {
-  //   mustwatchTV = true;
-  // } else {
-  //   mustwatchTV = false
-  // }
+  const handleAddToFavourite = (e) => {
+    e.preventDefault();
+    props.selectFavourite(tv.id);
+  };
 
   return (
     <Card className={classes.card}>
      <CardHeader
       className={classes.header}
       avatar={
-        tv.fav ? (
+        tv.favourite ? (
           <Avatar className={classes.avatar}>
             <FavoriteIcon />
           </Avatar>
@@ -82,7 +75,9 @@ export default function TVCard( tv, action ) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      {action(tv)}
+      <IconButton aria-label="add to favourites" onClick={handleAddToFavourite}>
+        <FavoriteIcon color="primary" fontSize="large" />
+    </IconButton>
         <Link to={`/tvseries/${tv.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

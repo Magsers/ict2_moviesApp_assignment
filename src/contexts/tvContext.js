@@ -28,7 +28,7 @@ const TVContextProvider = (props) => {
   };
 
   const removeFromTVFavourites = (tv) => {
-    setFavourites(tvFavourites.filter((mId) => mId !== tv.id));
+    setFavourites(tvFavourites.filter((tId) => tId !== tv.id));
   };
 
   return (

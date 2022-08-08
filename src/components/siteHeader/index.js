@@ -42,7 +42,6 @@ const SiteHeader = () => {
   const open = Boolean(anchorEl);
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favourite Movies", path: "/movies/favourites" },
     { label: "Favourites", path: "/favourites" },
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "TV Series", path: "/tvseries" },

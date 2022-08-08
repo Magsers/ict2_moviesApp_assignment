@@ -7,6 +7,7 @@ import { useQueries } from "react-query";
 import { getMovie, getTV } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
+import RemoveFromTVFavourites from "../components/cardIcons/removeFromTVFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouritesPage = () => {
@@ -69,7 +70,7 @@ const FavouritesPage = () => {
         action={(tv) => {
           return (
             <>
-              <RemoveFromFavourites tv={tv} />
+              <RemoveFromTVFavourites tv={tv} />
               {/* <WriteReview tv={tv} /> */}
             </>
           );

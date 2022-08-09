@@ -58,17 +58,7 @@ const SiteHeader = () => {
 
   return ( 
     <>
-    {token ? (
-        <p>
-          Welcome! <button onClick={() => signout()}>Sign out</button>
-        </p>
-      ) : (
-        <p>
-          You are not logged in{" "}
-          <button onClick={() => navigate("login")}>Login</button>
-        </p>
-      )}
-      <AppBar className={classes.appbar}
+    <AppBar className={classes.appbar}
       position="fixed" elevation={0} color='primary'> 
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
@@ -115,6 +105,16 @@ const SiteHeader = () => {
             </>
           ) : (
             <>
+            {token ? (
+        <Typography variant="h4" className={classes.root}>
+          Welcome! <IconButton color="white" className={classes.root} onClick={() => signout()}>Sign out</IconButton>
+        </Typography>
+      ) : (
+        <p>
+          You are not logged in{" "}
+          <button onClick={() => navigate("login")}>Login</button>
+        </p>
+      )}
               {menuOptions.map((opt) => (
                 <NavLink
                   key={opt.label}

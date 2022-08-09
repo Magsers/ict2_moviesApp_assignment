@@ -8,6 +8,7 @@ import NavigationIcon from "@material-ui/icons/Navigation";
 import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import { getTVCast } from "../../api/tmdb-api";
+import TVReviews from '../tvReviews'
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -110,7 +111,7 @@ useEffect(() => {
         Reviews
       </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-        {/* <TVSeriesReviews tv={tv} /> */}
+        <TVReviews tv={tv} />
       </Drawer>
       
     </>

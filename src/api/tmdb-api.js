@@ -90,6 +90,17 @@ export const getTV = (args) => {
       });
   };
 
+  export const getTVReviews = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/tv/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+      .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
+  };
+
   export const getUpcomingMovies = () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
@@ -135,9 +146,9 @@ export const getTVImages = ({ queryKey }) => {
  });
 };
 
-export const getCast = (id, showStr) => {
+export const getCast = (id, str) => {
   let show;
-  if (showStr === "tv") {
+  if (str === "tv") {
     show = "tv"; 
   } else {
     show = "movie";

@@ -107,7 +107,7 @@ const SiteHeader = () => {
             <>
             {token ? (
         <Typography variant="h4" className={classes.root}>
-          Welcome! <IconButton color="white" className={classes.root} onClick={() => signout()}>Sign out</IconButton>
+          Welcome! <IconButton className={classes.root} onClick={() => signout()}>Sign out</IconButton>
         </Typography>
       ) : (
         <p>

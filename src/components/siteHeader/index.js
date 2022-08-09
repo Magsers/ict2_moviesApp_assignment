@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { AuthContext } from "../../contexts/authContext";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -38,6 +38,7 @@ const SiteHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const { token, signout } = useContext(AuthContext);
 
   const open = Boolean(anchorEl);
   const menuOptions = [
@@ -57,6 +58,16 @@ const SiteHeader = () => {
 
   return ( 
     <>
+    {token ? (
+        <p>
+          Welcome! <button onClick={() => signout()}>Sign out</button>
+        </p>
+      ) : (
+        <p>
+          You are not logged in{" "}
+          <button onClick={() => navigate("login")}>Login</button>
+        </p>
+      )}
       <AppBar className={classes.appbar}
       position="fixed" elevation={0} color='primary'> 
         <Toolbar>

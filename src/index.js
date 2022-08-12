@@ -8,8 +8,9 @@ import TVDetailsPage from "./pages/tvSeriesDetailsPage";
 import ActorPage from "./pages/actorPage";
 import LoginPage from "./pages/loginPage";
 import CastPage from "./pages/castPage";
-import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
+// import FavouriteMoviesPage from "./pages/favouriteMoviesPage";
 import FavouritesPage from "./pages/favouritesPage";
+import MustWatchMoviesPage from "./pages/mustWatchPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
@@ -41,10 +42,16 @@ const App = () => {
         <MoviesContextProvider>
         <TVContextProvider>
           <Routes>
-            <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+            {/* <Route path="/movies/favourites" element={<FavouriteMoviesPage />} /> */}
             <Route path="/favourites" element={
                 <ProtectedRoute>
                   <FavouritesPage />
+                </ProtectedRoute>
+               }
+              />
+            <Route path="/mustwatch" element={
+                <ProtectedRoute>
+                  <MustWatchMoviesPage />
                 </ProtectedRoute>
                }
               />

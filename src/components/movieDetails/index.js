@@ -113,7 +113,7 @@ const MovieDetails = ( {movie}) => {
         </li>
         {similar.map((s) => (
           <li key={s.id}>
-            <Chip label={s.title} className={classes.chip} />
+            <Link to={`/movies/${s.id}`}><Chip label={s.title} className={classes.chip} /></Link>
           </li>
         ))}
       </Paper>

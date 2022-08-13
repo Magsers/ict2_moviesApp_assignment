@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) =>  ({
   },
 }));
 
-function CastListPageTemplate({ cast, title }) {
+function CastListPageTemplate({ cast, title, name }) {
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
@@ -35,7 +35,7 @@ function CastListPageTemplate({ cast, title }) {
     <>
     <Grid container className={classes.root}>
       <Grid item xs={12}>
-        <Header title={title} />
+        <Header title={title} name={name}/>
       </Grid>
       <Grid item container spacing={5}>
       <CastList cast={cast} />

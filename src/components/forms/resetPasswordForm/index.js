@@ -10,7 +10,7 @@ function ResetPasswordForm() {
   const navigate = useNavigate();
   useEffect(() => {
     if (loading) return;
-    if (user) navigate("/", { replace: true });
+    if (user) navigate("/reset", { replace: true });
   }, [user, loading, navigate]);
   return (
     <div className="flex pt-6">

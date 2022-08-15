@@ -40,6 +40,10 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  const login = () => {
+    logInWithEmailAndPassword(email, password);
+    if (user) navigate("/home", { replace: true });
+  };
 
   useEffect(() => {
     if (loading) return;
@@ -80,9 +84,8 @@ function LoginForm() {
           </div>
           <Button variant="outlined" size="medium" color="primary"
             className="btn btn-primary w-full"
-            onClick={() => logInWithEmailAndPassword(email, password)}
-          >
-            Login
+            onClick={login}>
+            Log in
           </Button>
           <div>
             <Link to="/reset" className="btn btn-ghost w-full">

@@ -1,17 +1,21 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import { useNavigate, NavLink } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import { AuthContext } from "../../contexts/authContext";
+// import { AuthContext } from "../../contexts/authContext";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, logout } from "../../firebase";
+// import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -21,25 +25,36 @@ const useStyles = makeStyles((theme) => ({
     // background: 'none',
   },
   inactiveLink: {
-    color: 'white',
-    padding : theme.spacing(1),
-    fontSize: '1.5rem'
+    color: "white",
+    padding: theme.spacing(1),
+    fontSize: "1.5rem",
   },
   activeLink: {
-    color: 'black',
-    padding : theme.spacing(1),
-    fontSize: '1.5rem',
-    background: "#bfbfbf"
-  }
+    color: "black",
+    padding: theme.spacing(1),
+    fontSize: "1.5rem",
+    background: "#bfbfbf",
+  },
 }));
 
+const signOut = () => {
+  logout();
+};
+
 const SiteHeader = () => {
+  const [user, loading] = useAuthState(auth);
   const classes = useStyles();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/login");
+  }, [user, loading, navigate]);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  const { token, signout } = useContext(AuthContext);
+  // const { token, signout } = useContext(AuthContext);
 
   const open = Boolean(anchorEl);
   const menuOptions = [
@@ -49,6 +64,7 @@ const SiteHeader = () => {
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/toprated" },
     { label: "TV Series", path: "/tvseries" },
+    // { label: "Sign Out", path: "/logout" },
   ];
 
   const handleMenuSelect = (pageURL) => {
@@ -59,10 +75,14 @@ const SiteHeader = () => {
     setAnchorEl(event.currentTarget);
   };
 
-  return ( 
+  return (
     <>
-    <AppBar className={classes.appbar}
-      position="fixed" elevation={0} color='primary'> 
+      <AppBar
+        className={classes.appbar}
+        position="fixed"
+        elevation={0}
+        color="primary"
+      >
         <Toolbar>
           <Typography variant="h4" className={classes.title}>
             TMDB Client
@@ -108,28 +128,37 @@ const SiteHeader = () => {
             </>
           ) : (
             <>
-            {token ? (
-        <Typography variant="h4" className={classes.root}>
-          Welcome! <IconButton className={classes.root} onClick={() => signout()}>Sign out</IconButton>
-        </Typography>
-      ) : (
-        <p>
-          You are not logged in{" "}
-          <Button onClick={() => navigate("login")}>Login</Button>
-        </p>
-      )}
+              {!user ? (
+                <Typography variant="h4" className={classes.root}>
+                  Please Log In
+                </Typography>
+              ) : (
+                <Typography variant="h4" className={classes.root}>
+                  You are logged in!
+                  <Button
+                    variant="outlined"
+                    size="medium"
+                    color="white"
+                    className="btn btn-primary w-full"
+                    onClick={signOut}
+                  >
+                    Log Out
+                  </Button>
+                </Typography>
+              )}
+
               {menuOptions.map((opt) => (
                 <NavLink
                   key={opt.label}
                   to={opt.path}
                   className={({ isActive }) =>
-                  isActive ? classes.activeLink : classes.inactiveLink
-                }
+                    isActive ? classes.activeLink : classes.inactiveLink
+                  }
                   color="inherit"
                   // onClick={() => handleMenuSelect(opt.path)}
                 >
                   {opt.label}
-                </NavLink> 
+                </NavLink>
               ))}
             </>
           )}

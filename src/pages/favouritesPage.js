@@ -9,6 +9,7 @@ import Spinner from "../components/spinner";
 import RemoveFromFavourites from "../components/cardIcons/removeFromFavourites";
 import RemoveFromTVFavourites from "../components/cardIcons/removeFromTVFavourites";
 import WriteReview from "../components/cardIcons/writeReview";
+import WriteTVReview from "../components/cardIcons/writeTVReview";
 
 const FavouritesPage = () => {
   const { favourites: movieIds } = useContext(MoviesContext);
@@ -71,7 +72,7 @@ const FavouritesPage = () => {
           return (
             <>
               <RemoveFromTVFavourites tv={tv} />
-              {/* <WriteReview tv={tv} /> */}
+              <WriteTVReview tv={tv} />
             </>
           );
         } } /></>

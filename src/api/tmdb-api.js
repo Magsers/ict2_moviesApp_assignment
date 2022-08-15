@@ -141,21 +141,20 @@ export const getTVSeries = () => {
   });
 };
 
-export const getTVImages = ({ queryKey }) => {
+export const getTVImages = async ({ queryKey }) => {
   const [, idPart] = queryKey;
   const { id } = idPart;
-  return fetch(
-    `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  ).then( (response) => {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/tv/${id}/images?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    );
     if (!response.ok) {
       throw new Error(response.json().message);
     }
-    return response.json();
-
-  })
-  .catch((error) => {
-    throw error
- });
+    return await response.json();
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getCast = (id, str) => {

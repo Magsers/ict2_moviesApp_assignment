@@ -58,7 +58,7 @@ const SiteHeader = () => {
 
   const open = Boolean(anchorEl);
   const menuOptions = [
-    { label: "Home", path: "/" },
+    { label: "Movies", path: "/movies" },
     { label: "Favourites", path: "/favourites" },
     { label: "Must Watch", path: "/mustwatch" },
     { label: "Upcoming", path: "/movies/upcoming" },
@@ -129,16 +129,16 @@ const SiteHeader = () => {
           ) : (
             <>
               {!user ? (
-                <Typography variant="h4" className={classes.root}>
+                <Typography variant="h6" className={classes.root}>
                   Please Log In
                 </Typography>
               ) : (
-                <Typography variant="h4" className={classes.root}>
-                  You are logged in!
+                <Typography variant="h6" className={classes.root}>
+                  Logged in : {user.email} 
                   <Button
                     variant="outlined"
                     size="medium"
-                    color="white"
+                    color="inherit"
                     className="btn btn-primary w-full"
                     onClick={signOut}
                   >

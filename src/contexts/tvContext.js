@@ -23,7 +23,7 @@ const TVContextProvider = (props) => {
     }
   };
 
-  const addReview = (tv, review) => {
+  const addTVReview = (tv, review) => {
     setMyReviews( {...myReviews, [tv.id]: review } )
   };
 
@@ -39,7 +39,7 @@ const TVContextProvider = (props) => {
         removeFromTVFavourites,
         mustWatch,
         addToMustWatch,
-        addReview,
+        addTVReview,
       }}
     >
       {props.children}

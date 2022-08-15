@@ -22,7 +22,8 @@ import MoviesContextProvider from "./contexts/moviesContext";
 import TVContextProvider from "./contexts/tvContext";
 import AuthContextProvider from "./contexts/authContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
-import ProtectedRoute from "./components/protectedRoute";
+import AddTVReviewPage from './pages/addTVReviewPage'
+// import ProtectedRoute from "./components/protectedRoute";
 import Login from "./pages/login";
 import Logout from "./pages/logout";
 import Register from "./pages/register";
@@ -49,20 +50,9 @@ const App = () => {
         <MoviesContextProvider>
         <TVContextProvider>
           <Routes>
-            {/* <Route path="/movies/favourites" element={<FavouriteMoviesPage />} /> */}
-            <Route path="/favourites" element={
-                <ProtectedRoute>
-                  <FavouritesPage />
-                </ProtectedRoute>
-               }
-              />
-            <Route path="/mustwatch" element={
-                <ProtectedRoute>
-                  <MustWatchMoviesPage />
-                </ProtectedRoute>
-               }
-              />
-            <Route path="/home" element={<HomePage />} />
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/mustWatch" element={<MustWatchMoviesPage />} />
+            <Route path="/movies" element={<HomePage />} />
             <Route path="/" element={<WelcomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />              
             <Route path="/login" element={<Login />} />
@@ -77,6 +67,7 @@ const App = () => {
             <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
             <Route path="/movies/toprated" element={<TopRatedMoviesPage />} />
             <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+            <Route path="/reviews/tv/form" element={<AddTVReviewPage/>} />
             <Route path="/tvseries" element={<TVSeriesPage />} />
           </Routes>
         </TVContextProvider>

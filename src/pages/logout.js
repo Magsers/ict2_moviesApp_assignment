@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 const Logout = () => {
   const navigate = useNavigate();
   useEffect(() => {
-    auth.signOut().then(navigate("/home"));
+    auth.signOut().then(navigate("/movies"));
   });
 };
 

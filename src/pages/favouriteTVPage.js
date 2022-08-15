@@ -9,7 +9,6 @@ import WriteReview from "../components/cardIcons/writeReview";
 
 const FavouritesTVPage = () => {
     const { tvFavourites: tvIds } = useContext(TVContext);
-    console.log(tvIds);
 
   // Create an array of queries and run in parallel.
   const favouriteTVQueries = useQueries(

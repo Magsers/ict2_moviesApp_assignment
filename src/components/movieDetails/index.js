@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const MovieDetails = ( {movie}) => {
-  // console.log(movie.id)
   const classes = useStyles();
   const [similar, setSimilar] = useState([]);
   const [cast, setCast] = useState([]);

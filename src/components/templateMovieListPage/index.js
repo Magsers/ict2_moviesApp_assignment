@@ -6,6 +6,7 @@ import Fab from "@material-ui/core/Fab";
 import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import MovieList from "../movieList";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) =>  ({
   root: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) =>  ({
   },
 }));
 
-function MovieListPageTemplate({ movies, title, action }) {
+function MovieListPageTemplate({ movies, title, user, action }) {
   const classes = useStyles();
   const [titleFilter, setTitleFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
@@ -46,6 +47,9 @@ let displayedMovies = movies
     <Grid container className={classes.root}>
       <Grid item xs={12}>
         <Header title={title} />
+      </Grid>
+      <Grid item xs={12}>
+        <Typography user={user} />
       </Grid>
       <Grid item container spacing={5}>
       <MovieList action={action} movies={displayedMovies} />

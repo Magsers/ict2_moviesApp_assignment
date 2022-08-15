@@ -12,7 +12,6 @@ const AuthContextProvider = ({ children }) => {
   const authenticate = async (username, password) => {
     const token = await fakeAuth(username, password);
     setToken(token);
-    console.log(token);
     const origin = location.state?.intent?.pathname || "/";
     navigate(origin);
   };

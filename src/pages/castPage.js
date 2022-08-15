@@ -31,8 +31,7 @@ const CastPage = () => {
   }
 
   const name = movie.title;
-  console.log(name);
-
+  
   return (
     <PageTemplate
       title="Cast"

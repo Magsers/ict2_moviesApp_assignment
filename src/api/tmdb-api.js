@@ -85,7 +85,6 @@ export const getTV = (args) => {
     )
       .then((res) => res.json())
       .then((json) => {
-        // console.log(json.results);
         return json.results;
       });
   };
@@ -96,7 +95,6 @@ export const getTV = (args) => {
     )
       .then((res) => res.json())
       .then((json) => {
-        // console.log(json.results);
         return json.results;
       });
   };
@@ -173,7 +171,6 @@ export const getCast = (id, str) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.cast);
       return json.cast;
     });
 };
@@ -184,13 +181,11 @@ export const getTVCast = (id) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.cast);
       return json.cast;
     });
 };
 
 export const getActor = (args) => {
-  // console.log(args)
   const [, idPart] = args.queryKey;
   const { id } = idPart;
   return fetch(
@@ -230,7 +225,6 @@ export const getSimilar = (id) => {
   )
     .then((res) => res.json())
     .then((json) => {
-      // console.log(json.results);
       return json.results;
     });
 };

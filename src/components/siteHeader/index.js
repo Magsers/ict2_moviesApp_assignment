@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -14,7 +14,7 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 // import { AuthContext } from "../../contexts/authContext";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, logout } from "../../firebase";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles((theme) => ({
@@ -42,14 +42,14 @@ const signOut = () => {
 };
 
 const SiteHeader = () => {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const classes = useStyles();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/login");
-  }, [user, loading, navigate]);
+  // useEffect(() => {
+  //   if (loading) return;
+  //   if (!user) return navigate("/");
+  // }, [user, loading, navigate]);
 
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
@@ -129,22 +129,39 @@ const SiteHeader = () => {
           ) : (
             <>
               {!user ? (
-                <Typography variant="h6" className={classes.root}>
-                  Please Log In
-                </Typography>
-              ) : (
-                <Typography variant="h6" className={classes.root}>
-                  Logged in : {user.email} 
-                  <Button
+                <><Typography variant="h6" className={classes.root}>
+                    Please Log In
+                  </Typography>
+                  <Link to="/login" className="link">
+                    <Button
                     variant="outlined"
                     size="medium"
-                    color="inherit"
-                    className="btn btn-primary w-full"
-                    onClick={signOut}
+                    color="secondary"
                   >
-                    Log Out
-                  </Button>
-                </Typography>
+                      Log In
+                    </Button></Link>
+                    <Link to={`/register`}>
+                    <Button
+                    variant="outlined"
+                    size="medium"
+                    color="secondary"
+                  >
+                      Register
+                    </Button></Link>
+                    </>
+                
+              ) : (
+                <><Typography variant="h6" className={classes.root}>
+                      Logged in: {user.email} </Typography>
+                      <Button
+                        variant="outlined"
+                        size="medium"
+                        color="inherit"
+                        className="btn btn-primary w-full"
+                        onClick={signOut}
+                      >
+                        Log Out
+                      </Button></>
               )}
 
               {menuOptions.map((opt) => (

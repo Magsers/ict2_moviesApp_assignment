@@ -15,7 +15,7 @@ const HomePage = (props) => {
 
   useEffect(() => {
     if (loading) return;
-    if (!user) return navigate("/login");
+    if (!user) return navigate("/movies");
   }, [user, loading, navigate]);
 
   if (isLoading) {

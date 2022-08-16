@@ -42,12 +42,12 @@ function RegisterForm() {
   const navigate = useNavigate();
   const register = () => {
     registerWithEmailAndPassword(email, password);
-    if (user) navigate("/", { replace: true });
+    if (user) navigate("/movies", { replace: true });
   };
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigate("/register", { replace: true });
+    if (user) navigate("/movies", { replace: true });
   }, [user, loading, navigate]);
 
   return (

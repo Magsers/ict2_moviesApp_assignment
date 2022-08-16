@@ -1,11 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/authContext";
+import { auth } from "../../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const ProtectedRoute = ({ children }) => {
-  const { token } = useContext(AuthContext);
+  // const { token } = useContext(AuthContext);
+  const [user] = useAuthState(auth);
+  // const navigate = useNavigate();
   const location = useLocation();
-  if (!token) {
+  console.log(location)
+  if (!user) {
     return <Navigate to={"/login"} replace state={{ intent: location }} />;
   }
 

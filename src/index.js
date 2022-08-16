@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
-import WelcomePage from "./pages/welcomePage";
+// import WelcomePage from "./pages/welcomePage";
 import MoviePage from "./pages/movieDetailsPage";
 import TVSeriesPage from "./pages/tvSeriesPage";
 import TVDetailsPage from "./pages/tvSeriesDetailsPage";
@@ -20,10 +20,10 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools'
 import MoviesContextProvider from "./contexts/moviesContext";
 import TVContextProvider from "./contexts/tvContext";
-import AuthContextProvider from "./contexts/authContext";
+// import AuthContextProvider from "./contexts/authContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
 import AddTVReviewPage from './pages/addTVReviewPage'
-// import ProtectedRoute from "./components/protectedRoute";
+import ProtectedRoute from "./components/protectedRoute";
 import Login from "./pages/login";
 import Logout from "./pages/logout";
 import Register from "./pages/register";
@@ -45,15 +45,27 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
       {/* <Navigation /> */}
-      <AuthContextProvider>
+      {/* <AuthContextProvider> */}
         <SiteHeader />
         <MoviesContextProvider>
         <TVContextProvider>
           <Routes>
-            <Route path="/favourites" element={<FavouritesPage />} />
-            <Route path="/mustWatch" element={<MustWatchMoviesPage />} />
+            {/* <Route path="/favourites" element={<FavouritesPage />} /> */}
+            <Route path="/favourites"element={
+              <ProtectedRoute>
+                <FavouritesPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/mustWatch"element={
+              <ProtectedRoute>
+                <MustWatchMoviesPage />
+              </ProtectedRoute>
+            }
+          />
+            {/* <Route path="/mustWatch" element={<MustWatchMoviesPage />} /> */}
             <Route path="/movies" element={<HomePage />} />
-            <Route path="/" element={<WelcomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />              
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
@@ -72,7 +84,7 @@ const App = () => {
           </Routes>
         </TVContextProvider>
         </MoviesContextProvider>
-        </AuthContextProvider>
+        {/* </AuthContextProvider> */}
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

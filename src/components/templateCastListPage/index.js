@@ -1,9 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "../headerCastList";
-import FilterCard from "../filterMoviesCard";
 import Grid from "@material-ui/core/Grid";
-import Fab from "@material-ui/core/Fab";
-import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import CastList from "../actorList";
 
@@ -22,14 +19,6 @@ const useStyles = makeStyles((theme) => ({
 
 function CastListPageTemplate({ cast, title, name }) {
   const classes = useStyles();
-  const [titleFilter, setTitleFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("0");
-  const [drawerOpen, setDrawerOpen] = useState(false);
-
-  const handleChange = (type, value) => {
-    if (type === "name") setTitleFilter(value);
-    else setGenreFilter(value);
-  };
 
   return (
     <>
@@ -41,25 +30,6 @@ function CastListPageTemplate({ cast, title, name }) {
           <CastList cast={cast} />
         </Grid>
       </Grid>
-      <Fab
-        color="secondary"
-        variant="extended"
-        onClick={() => setDrawerOpen(true)}
-        className={classes.fab}
-      >
-        Filter
-      </Fab>
-      <Drawer
-        anchor="left"
-        open={drawerOpen}
-        onClose={() => setDrawerOpen(false)}
-      >
-        <FilterCard
-          onUserInput={handleChange}
-          titleFilter={titleFilter}
-          genreFilter={genreFilter}
-        />
-      </Drawer>
     </>
   );
 }

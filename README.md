@@ -91,61 +91,96 @@ Routing/Navigation.
 ## Views/Pages
 
 # actorPage
+
+Displays Actor info.  Supports caching and navigational arrows.
+
 ![][actor]
 
 [actor]: /public/assets/actorPage.PNG
 
 # addTVReviewPage
+
+Form to add a TV Series Review
+
 ![][addTVReviewPage]
 
 [addTVReviewPage]: /public/assets/addTVReviewPage.PNG
 
 # castPage
+
+Lists movie cast members.  Actor info link to their bio page. Supports caching and navigational arrows in the header.
+
 ![][castPage]
 
 [castPage]: /public/assets/castPage.PNG
 
 # castTVPage
+
+Lists tv cast members.  Actor info link to their bio page. Supports caching and navigational arrows in the header.
+
 ![][castTVPage]
 
 [castTVPage]: /public/assets/castTVPage.PNG
 
 # favouritesPage
+
+Lists TV Series favourites and movie favourites.  Option to remove favourites or write a review on both movies and tv favourites available.
+
 ![][favourites]
 
 [favourites]: /public/assets/favourites.PNG
 
 # login
+
+Firebase set up for authentication.  User can login via the Login form.
+
 ![][login]
 
 [login]: /public/assets/login.PNG
 
 # mustWatchPage
+
+Watchlist can be created through Top Rated and Upcoming movies pages.  On selecting a movie for Must Watch, icon appears and movie is added to must Watch array.  Can remove a movie from the list also.
 ![][mustWatch]
 
 [mustWatch]: /public/assets/mustWatch.PNG
 
 # register
+
+Firebase set up for authentication.  User can register via the Register form.
+
 ![][register]
 
 [register]: /public/assets/register.PNG
 
 # reset
+
+Option to reset password.  If user is registered link to change password will be emailed to the registered email address.  
+
 ![][reset]
 
 [reset]: /public/assets/reset.PNG
 
 # topRatedMoviesPage
+
+Top Rated movies page.  Caching support and floating filter button.
+
 ![][topRated]
 
 [topRated]: /public/assets/topRated.PNG
 
 # tvSeriesDetailsPage
+
+Overview of the TV Series, header, Cast, Genres, link to cast members bio pages, rating and release date.  Cache support and navigational arrows.
+
 ![][tvSeriesDetails]
 
 [tvSeriesDetails]: /public/assets/tvSeriesDetails.PNG
 
 # tvSeriesPage
+
+Discover TV Series page.  Cache support and navigational arrows.
+
 ![][tvSeries]
 
 [tvSeries]: /public/assets/tvSeries.PNG

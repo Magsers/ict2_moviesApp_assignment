@@ -2,6 +2,8 @@ import React from "react";
 import Chip from "@material-ui/core/Chip";
 import Paper from "@material-ui/core/Paper";
 import StarRate from "@material-ui/icons/StarRate";
+import HouseTwoToneIcon from "@material-ui/icons/HouseTwoTone";
+import CakeTwoToneIcon from "@material-ui/icons/CakeTwoTone";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -33,8 +35,6 @@ const useStyles = makeStyles((theme) => ({
 const ActorDetails = (props) => {
   const classes = useStyles();
   const actor = props.actor;
-  console.log(actor.biography);
-  console.log(actor);
 
   return (
     <>
@@ -45,7 +45,15 @@ const ActorDetails = (props) => {
 
       <div className={classes.chipRoot}>
         <Paper component="ul" className={classes.chipSet}>
+          <Chip icon={<CakeTwoToneIcon />} label={`${actor.birthday}`} />
+        </Paper>
+
+        <Paper component="ul" className={classes.chipSet}>
           <Chip icon={<StarRate />} label={`${actor.popularity}`} />
+        </Paper>
+
+        <Paper component="ul" className={classes.chipSet}>
+          <Chip icon={<HouseTwoToneIcon />} label={`${actor.place_of_birth}`} />
         </Paper>
       </div>
     </>

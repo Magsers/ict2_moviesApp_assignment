@@ -2,8 +2,8 @@ import React from "react";
 import TVCard from "../components/tvCard";
 import SampleTV from "./sampleTVData";
 import { MemoryRouter } from "react-router";
-// import MoviesContextProvider from "../contexts/moviesContext";
-import { action } from "@storybook/addon-actions";
+import TVContextProvider from "../contexts/tvContext";
+// import { action } from "@storybook/addon-actions";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavourites";
 
 export default {
@@ -11,7 +11,7 @@ export default {
   component: TVCard,
   decorators: [
     (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
-    // (Story) => <MoviesContextProvider>{Story()}</MoviesContextProvider>,
+    (Story) => <TVContextProvider>{Story()}</TVContextProvider>,
   ],
 };
 

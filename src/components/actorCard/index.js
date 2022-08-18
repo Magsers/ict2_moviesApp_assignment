@@ -20,8 +20,8 @@ const useStyles = makeStyles({
 
 export default function ActorCard({ actor }) {
   const classes = useStyles();
-  
-return (
+
+  return (
     <Card className={classes.card}>
       <CardHeader
         className={classes.header}
@@ -31,15 +31,15 @@ return (
           </Typography>
         }
       />
-    <Card className={classes.card}>
-      <CardMedia
-        className={classes.media}
-        image={
-          actor.profile_path
-            ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
-            : `${process.env.PUBLIC_URL}/assets/poster-placeholder.png`
-        }
-      />
+      <Card className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={
+            actor.profile_path
+              ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+              : `${process.env.PUBLIC_URL}/assets/poster-placeholder.png`
+          }
+        />
       </Card>
       <CardContent>
         <Grid container>
@@ -51,12 +51,11 @@ return (
           </Grid>
         </Grid>
         <Link to={`/actor/${actor.id}`}>
-        <Button variant="outlined" size="medium" color="primary">
+          <Button variant="outlined" size="medium" color="primary">
             Actor Info ...
           </Button>
-          </Link>
+        </Link>
       </CardContent>
     </Card>
-    
   );
 }

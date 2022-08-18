@@ -30,28 +30,25 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ActorDetails = ( props) => {
+const ActorDetails = (props) => {
   const classes = useStyles();
   const actor = props.actor;
+  console.log(actor.biography);
+  console.log(actor);
 
   return (
     <>
       <Typography variant="h5" component="h3">
         Biography
       </Typography>
-      <Typography component="p">
-        {actor.biography}
-      </Typography>
-         
+      <Typography component="p">{actor.biography}</Typography>
+
       <div className={classes.chipRoot}>
-      <Paper component="ul" className={classes.chipSet}>
-        <Chip
-          icon={<StarRate />}
-          label={`${actor.popularity}`}
-        />
-      </Paper>
+        <Paper component="ul" className={classes.chipSet}>
+          <Chip icon={<StarRate />} label={`${actor.popularity}`} />
+        </Paper>
       </div>
-      </>
+    </>
   );
 };
-export default  ActorDetails ;
+export default ActorDetails;

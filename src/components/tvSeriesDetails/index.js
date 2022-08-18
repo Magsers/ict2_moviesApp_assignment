@@ -44,16 +44,18 @@ const useStyles = makeStyles((theme) => ({
 const TVDetails = ( props ) => {
   const classes = useStyles();
   const tv = props.tv
+  const genres = tv.genres
   const [cast, setCast] = useState([]);
   const [drawerOpen, setDrawerOpen] = useState(false); 
   
-useEffect(() => {
-  getTVCast(tv.id).then((cast) => {
-      setCast(cast);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  useEffect(() => {
+    getTVCast(tv.id).then((cast) => {
+        setCast(cast);
+        console.log(cast)
+      });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []); 
+  
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -70,7 +72,7 @@ useEffect(() => {
         <li>
           <Chip label="Genres" className={classes.chipLabel} color="primary" />
         </li>
-        {tv.genres.map((g) => (
+        {genres.map((g) => (
           <li key={g.name}>
             <Chip label={g.name} className={classes.chip} />
           </li>
@@ -84,7 +86,6 @@ useEffect(() => {
           <Chip label="Full Cast" className={classes.chipLabel} color="primary" />
         </Link>
         </li>
-        
           {cast.map((c) => (
           <li key={c.id}>
             <Link to={`/actor/${c.id}`}> <Chip label={c.name} className={classes.chip} /></Link>
@@ -97,7 +98,7 @@ useEffect(() => {
           icon={<StarRate />}
           label={`${tv.vote_average} (${tv.vote_count}`}
         />
-        <Chip label={`Released: ${tv.release_date}`} />
+        <Chip label={`Released: ${tv.first_air_date}`} />
       </Paper>
       </div>
       

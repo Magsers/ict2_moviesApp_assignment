@@ -51,9 +51,10 @@ function RegisterForm() {
   }, [user, loading, navigate]);
 
   return (
-    <Box component="div" className={classes.root}>
+    <Box component="form" className={classes.root}>
+     
     <Typography component="h2" variant="h3">
-      Register
+      Reister
     </Typography>
 
     <div className="flex pt-6">

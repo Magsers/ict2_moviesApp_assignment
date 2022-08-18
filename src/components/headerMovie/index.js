@@ -31,7 +31,6 @@ const MovieHeader = (props) => {
        <IconButton aria-label="go back"  onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
-
       <Typography variant="h4" component="h3">
         {movie.title}
         <a href={movie.homepage}>

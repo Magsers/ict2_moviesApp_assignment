@@ -19,8 +19,7 @@ const TVSeries = (props) => {
 
   const tvFavourites = tvseries.filter(m => m.favouurite)
   localStorage.setItem('tvFavourites', JSON.stringify(tvFavourites))
-  // const addToFavourites = (movieId) => true 
-
+  
   return (
     <PageTemplate
       title="Discover TV Series"

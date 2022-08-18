@@ -1,10 +1,14 @@
 import React from "react";
 import ActorCard from "../components/actorCard";
 import SampleActor from "./sampleActorData";
+import { MemoryRouter } from "react-router";
 
 export default {
   title: "Actor Page/ActorCard",
   component: ActorCard,
+  decorators: [
+    (Story) => <MemoryRouter initialEntries={["/"]}>{Story()}</MemoryRouter>,
+  ],
 };
 
 export const Basic = () => {

@@ -5,7 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,15 +49,14 @@ function LoginForm() {
     if (loading) return;
     if (user) navigate("/movies", { replace: true });
   }, [loading, navigate, user]);
-  
-  return (
-    <Box component="div" className={classes.root}>
-      <Typography component="h2" variant="h3">
-        Log In
-      </Typography>
 
+  return (
+    <Box component="form" className={classes.root}>
       <div className="flex pt-6">
         <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
+          <div className="card-header">
+            <h2 className="text-3xl">Login</h2>
+          </div>
           <div className="card-body">
             <div className="form-control">
               <label className="label">

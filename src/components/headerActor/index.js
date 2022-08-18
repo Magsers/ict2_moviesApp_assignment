@@ -21,19 +21,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const ActorHeader = (props) => {
+  const navigate = useNavigate();
   const classes = useStyles();
   const actor = props.actor;
-  const navigate = useNavigate();
-
+  
   return (
     <Paper component="div" className={classes.root}>
-      <IconButton aria-label="go back" onClick={() => navigate(-1)}>
+      <IconButton aria-label="go back"  onClick={() => navigate(-1)}>
         <ArrowBackIcon color="primary" fontSize="large" />
       </IconButton>
+    
       <Typography variant="h4" component="h3">
         {actor.name}
       </Typography>
-      <IconButton aria-label="go forward" onClick={() => navigate(1)}>
+      <IconButton aria-label="go forward"  onClick={() => navigate(1)}>
         <ArrowForwardIcon color="primary" fontSize="large" />
       </IconButton>
     </Paper>

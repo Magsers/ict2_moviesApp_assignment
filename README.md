@@ -1,91 +1,89 @@
-# moviesapp-ci-2021
+# TMDB - ICT Skills 2
 
-
-
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/oconnordiarmuid/moviesapp-ci-2021.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/integrations/)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Automatically merge when pipeline succeeds](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://docs.gitlab.com/ee/user/clusters/agent/)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://gitlab.com/-/experiment/new_project_readme_content:66f52974c694a0a5196c76dfd303a95f?https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+# Margaret McCarthy
+# ICT2 Skills Assignment - Higher Diploma in Computer Science 2021
 
 ## Name
-Choose a self-explaining name for your project.
+TMDB - ICT Skills 2
 
 ## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+This project is a REACT application based on The Movies Database API https://developers.themoviedb.org/4/getting-started/authorization 
+It uses the Material UI framework and Firebase Authentication.  
+
+# App Overview
+The features of this app include : 
+* Display a list of current shows Eg: movies, tv series, upcoming movies and top rated movies.  Shows a poster image for each with some details.  
+* Display more detailed information on a show (tv series or movie) from the above list by clicking its 'More Info ..' button. The details include plot, genres, runtime, revenue, etc.
+* Show extracts from written reviews for a show (tv series or movie).
+* Show the full review text for a review.
+* Add either tv series or movies to your favourites list which is displayed on a favourites page.
+* Write a review for one of your favourite tv shows or movies.
+* The cast list is listed for each show and if you click Full Cast a list of the all the actors in a show are listed.
+* The header for the cast displays the show name.
+* On each actor card there is an Actor Info button which brings the user to the Actor's details page where there is a biography, images and more information about the actor.
+* Navigational arrows are throughout the app so the user can go back or forward to the page they were at.
+* On movies and tv series pages, the user can select favourites to add to a Favourites List.
+* On Upcoming movies and top rated movies the user can add movies to a Must Watch list.
+* Favourites and Must watch movies can also be deleted from the list.
+* To view the Favourites or the Must Watch list the user must be a registered user. Selecting these links without logging in will direct the user to a login page.
+* User can either Register as a new user, Login or Reset their password if they are already a user but forgot their password.
+* Firebase is used to authenticate the user.
+* Firestore needs to be set up in order to store each user's favourites.  This has not been developed yet so each user has the same favourites and watchlist.
+* Users can log out.  The site header will change to display logged in user's email when they log in and a logout button so they can log out.
+* Storybook backup is used to ensure most components are robust.
+* Caching is used throughout the app.
+
 
 ## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+
 
 ## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+Installation:
+
+npm install
+
+To Run Test Suite:
+
+npm test
+
+To Start Server:
+
+npm run start
+
+To Start Storybook:
+
+npm run storybook
+
+To Visit App:
+
+localhost:3000
 
 ## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+20095610@mail.wit.ie
 
 ## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+Features I would like to include in the future : 
+
+* Firestore to store user data so each user's favourites and watchlist is unique
+* More features to enhance the app.  Eg : Trailers, more actor / movie / tv series metadata.
+* Improve on the appearance of the login and register forms
+* Additional storybook components
+* Pagination
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+Open to contributions
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+Installation instructions above.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+Storybook support for testing components.
 
 ## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
+Margaret McCarthy - Higher Diploma in Computer Science 2021, SETU
+Diarmuid O'Connor - Lecturer of ICT2 Skills
 
 ## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Development has ceased at present as this was an assignment for ICT2 Skills.  
 

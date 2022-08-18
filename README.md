@@ -91,8 +91,9 @@ Routing/Navigation.
 ## Views/Pages
 
 # actorPage
+![][actor]
 
-https://github.com/Magsers/ict2_moviesApp_assignment/blob/master/public/assets/actor.jpg
+[actor]: /public/assets/actor.jpg
 
 # addTVReviewPage
 

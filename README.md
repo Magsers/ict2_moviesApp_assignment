@@ -1,12 +1,9 @@
-# TMDB - ICT Skills 2
-
-# Margaret McCarthy
-# ICT2 Skills Assignment - Higher Diploma in Computer Science 2021
+# ICT Skills 2 Assignment.
 
 ## Name
-TMDB - ICT Skills 2
+Margaret McCarthy
 
-## Description
+## Overview
 
 This project is a REACT application based on The Movies Database API https://developers.themoviedb.org/4/getting-started/authorization 
 It uses the Material UI framework and Firebase Authentication.  
@@ -16,7 +13,7 @@ The features of this app include :
 * Display a list of current shows Eg: movies, tv series, upcoming movies and top rated movies.  Shows a poster image for each with some details.  
 * Display more detailed information on a show (tv series or movie) from the above list by clicking its 'More Info ..' button. The details include plot, genres, runtime, revenue, etc.
 * Show extracts from written reviews for a show (tv series or movie).
-* Show the full review text for a review.
+* Show the full review text for a review for tv series and movies.
 * Add either tv series or movies to your favourites list which is displayed on a favourites page.
 * Write a review for one of your favourite tv shows or movies.
 * The cast list is listed for each show and if you click Full Cast a list of the all the actors in a show are listed.
@@ -35,19 +32,27 @@ The features of this app include :
 * Caching is used throughout the app.
 
 
-## Visuals
+## Setup Requirements
 
+Clone this repository. You will need node and npm installed globally on your machine.  
 
-## Installation
-Clone down this repository. You will need node and npm installed globally on your machine.
+You will need a TMDB API key and a Firebase API key.  
+
+You need to include a .env file ( see below ) which stores your TMDB API key and Firebase API key and Authentication information : 
+
+REACT_APP_TMDB_KEY=
+FAST_REFRESH=false
+
+REACT_APP_FIREBASE_API_KEY=
+REACT_APP_FIREBASE_AUTHDOMAIN=
+REACT_APP_FIREBASE_PROJECTID=
+REACT_APP_FIREBASE_STORAGEBUCKET=
+REACT_APP_FIREBASE_MESSAGINGSENDERID=
+REACT_APP_FIREBASE_APPID=
 
 Installation:
 
 npm install
-
-To Run Test Suite:
-
-npm test
 
 To Start Server:
 
@@ -60,6 +65,57 @@ npm run storybook
 To Visit App:
 
 localhost:3000
+
+## App Design
+
+Routing/Navigation.
+
+/movies - home page with list of movies
+/movies/:id - detailed information on a specific movie.
+/movies/upcoming - lists movies soon to be shown in cinemas.
+/movies/toprated - lists top rated movies
+/tvseries - lists tv series 
+/tvseries/:id - detailed information on a specific tv series
+/favourites - lists favourite tv series and favourite movies
+/mustWatch - users watchlist
+/reviews/:id - displays movie reviews 
+/reviews/form - form to add a movie review
+/reviews/tv/form - form to add a tv review
+/actor/:id - displays an actor's details and images
+/cast/:id/:str - displays either a tv or movie cast
+/login - Login form 
+/logout - Logout route
+/register - Register as a new user
+/reset - Reset your password if you have forgotten it
+
+## Views/Pages
+
+# actorPage
+
+public\assets\actor.jpg
+
+
+# addTVReviewPage
+
+# castPage
+
+# favouritesPage
+
+# login
+
+# mustWatchPage
+
+# register
+
+# reset
+
+# topRatedMoviesPage
+
+# tvSeriesDetailsPage
+
+# tvSeriesPage
+
+
 
 ## Support
 20095610@mail.wit.ie

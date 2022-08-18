@@ -189,7 +189,6 @@ export const getCast = (id, str) => {
   } else {
     show = "movie";
   }
-
   return fetch(
     `https://api.themoviedb.org/3/${show}/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
   )
@@ -245,7 +244,7 @@ export const getActorImages = ({ queryKey }) => {
 
 export const getSimilar = (id) => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false`
   )
     .then((res) => res.json())
     .then((json) => {

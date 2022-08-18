@@ -62,10 +62,6 @@ const App = () => {
               <Route path="/movies" element={<HomePage />} />
               <Route path="/" element={<HomePage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/logout" element={<Logout />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/reset" element={<Reset />} />
               <Route path="/movies/:id" element={<MoviePage />} />
               <Route path="/tvseries/:id" element={<TVDetailsPage />} />
               <Route path="/reviews/:id" element={<MovieReviewPage />} />
@@ -76,6 +72,10 @@ const App = () => {
               <Route path="/reviews/form" element={<AddMovieReviewPage />} />
               <Route path="/reviews/tv/form" element={<AddTVReviewPage />} />
               <Route path="/tvseries" element={<TVSeriesPage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/logout" element={<Logout />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/reset" element={<Reset />} />
             </Routes>
           </TVContextProvider>
         </MoviesContextProvider>

@@ -92,8 +92,7 @@ Routing/Navigation.
 
 # actorPage
 
-public\assets\actor.jpg
-
+https://github.com/Magsers/ict2_moviesApp_assignment/blob/master/public/assets/actor.jpg
 
 # addTVReviewPage
 

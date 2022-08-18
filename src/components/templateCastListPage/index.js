@@ -7,7 +7,7 @@ import Drawer from "@material-ui/core/Drawer";
 import { makeStyles } from "@material-ui/core/styles";
 import CastList from "../actorList";
 
-const useStyles = makeStyles((theme) =>  ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#bfbfbf",
     paddingTop: theme.spacing(7),
@@ -33,15 +33,15 @@ function CastListPageTemplate({ cast, title, name }) {
 
   return (
     <>
-    <Grid container className={classes.root}>
-      <Grid item xs={12}>
-        <Header title={title} name={name}/>
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Header title={title} name={name} />
+        </Grid>
+        <Grid item container spacing={5}>
+          <CastList cast={cast} />
+        </Grid>
       </Grid>
-      <Grid item container spacing={5}>
-      <CastList cast={cast} />
-      </Grid>
-    </Grid>
-    <Fab
+      <Fab
         color="secondary"
         variant="extended"
         onClick={() => setDrawerOpen(true)}
@@ -60,7 +60,7 @@ function CastListPageTemplate({ cast, title, name }) {
           genreFilter={genreFilter}
         />
       </Drawer>
-    </>    
+    </>
   );
 }
 export default CastListPageTemplate;

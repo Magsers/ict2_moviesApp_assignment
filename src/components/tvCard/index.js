@@ -29,35 +29,35 @@ export default function TVCard({ tv, action }) {
   const { tvFavourites } = useContext(TVContext);
   const { mustWatch } = useContext(TVContext);
 
- if (tvFavourites.find((id) => id === tv.id)) {
+  if (tvFavourites.find((id) => id === tv.id)) {
     tv.favourite = true;
   } else {
-    tv.favourite = false
+    tv.favourite = false;
   }
 
   if (mustWatch.find((id) => id === tv.id)) {
     tv.mustWatchtv = true;
   } else {
-    tv.mustWatchtv = false
+    tv.mustWatchtv = false;
   }
 
   return (
     <Card className={classes.card}>
-     <CardHeader
-      className={classes.header}
-      avatar={
-        tv.favourite ? (
-          <Avatar className={classes.avatar}>
-            <FavoriteIcon />
-          </Avatar>
-        ) : null
-      }
-      title={
-        <Typography variant="h5" component="p">
-          {tv.name}{" "}
-        </Typography>
-      }
-    />
+      <CardHeader
+        className={classes.header}
+        avatar={
+          tv.favourite ? (
+            <Avatar className={classes.avatar}>
+              <FavoriteIcon />
+            </Avatar>
+          ) : null
+        }
+        title={
+          <Typography variant="h5" component="p">
+            {tv.name}{" "}
+          </Typography>
+        }
+      />
       <CardMedia
         className={classes.media}
         image={
@@ -83,7 +83,7 @@ export default function TVCard({ tv, action }) {
         </Grid>
       </CardContent>
       <CardActions disableSpacing>
-      {action(tv)}
+        {action(tv)}
         <Link to={`/tvseries/${tv.id}`}>
           <Button variant="outlined" size="medium" color="primary">
             More Info ...

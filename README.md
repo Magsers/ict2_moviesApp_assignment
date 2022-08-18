@@ -93,27 +93,62 @@ Routing/Navigation.
 # actorPage
 ![][actor]
 
-[actor]: /public/assets/actor.jpg
+[actor]: /public/assets/actorPage.PNG
 
 # addTVReviewPage
+![][addTVReviewPage]
+
+[addTVReviewPage]: /public/assets/addTVReviewPage.PNG
 
 # castPage
+![][castPage]
+
+[castPage]: /public/assets/castPage.PNG
+
+# castTVPage
+![][castTVPage]
+
+[castTVPage]: /public/assets/castTVPage.PNG
 
 # favouritesPage
+![][favourites]
+
+[favourites]: /public/assets/favourites.PNG
 
 # login
+![][login]
+
+[login]: /public/assets/login.PNG
 
 # mustWatchPage
+![][mustWatch]
+
+[mustWatch]: /public/assets/mustWatch.PNG
 
 # register
+![][register]
+
+[register]: /public/assets/register.PNG
 
 # reset
+![][reset]
+
+[reset]: /public/assets/reset.PNG
 
 # topRatedMoviesPage
+![][topRated]
+
+[topRated]: /public/assets/topRated.PNG
 
 # tvSeriesDetailsPage
+![][tvSeriesDetails]
+
+[tvSeriesDetails]: /public/assets/tvSeriesDetails.PNG
 
 # tvSeriesPage
+![][tvSeries]
+
+[tvSeries]: /public/assets/tvSeries.PNG
 
 
 

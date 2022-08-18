@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import PageTemplate from '../components/templateCastListPage'
-import { getCast, getMovie } from "../api/tmdb-api";
+import { getTVCast, getTV } from "../api/tmdb-api";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 
-const CastPage = () => {
-  const { id, str } = useParams();
+const CastTVPage = () => {
+  const { id } = useParams();
   const [cast, setCast] = useState([]);
     
   useEffect(() => {
-    getCast(id, str).then((cast) => {
+    getTVCast(id).then((cast) => {
       setCast(cast);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, );
 
-  const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
-    getMovie
+  const { data: tv, error, isLoading, isError } = useQuery(
+    ["tv", { id: id }],
+    getTV
   );
 
   if (isLoading) {
@@ -29,7 +29,7 @@ const CastPage = () => {
     return <h1>{error.message}</h1>;
   }
 
-  const name = movie.title;
+  const name = tv.name;
   
   return (
     <PageTemplate
@@ -40,4 +40,4 @@ const CastPage = () => {
 );
 };
 
-export default CastPage;
+export default CastTVPage;

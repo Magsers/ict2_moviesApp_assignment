@@ -51,7 +51,7 @@ const TVDetails = ( props ) => {
   useEffect(() => {
     getTVCast(tv.id).then((cast) => {
         setCast(cast);
-        console.log(cast)
+        // console.log(cast)
       });
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []); 
@@ -82,7 +82,7 @@ const TVDetails = ( props ) => {
     {/* Cast */}
     <Paper component="ul" className={classes.chipSet}>
         <li>
-        <Link to={`/cast/${tv.id}/${"tv"}`}>
+        <Link to={`/cast/${tv.id}`}>
           <Chip label="Full Cast" className={classes.chipLabel} color="primary" />
         </Link>
         </li>

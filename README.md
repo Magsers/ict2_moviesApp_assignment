@@ -224,16 +224,14 @@ Finally I added some links in my siteHeader component in order to display Login 
 
 The protected routes are :
 
-* favourites
-* mustWatch
-* reviews for movies
-* review for tv series
+* /favourites - favourites
+* /mustWatch - mustWatch
+* /reviews/:id - reviews for movies
+* /reviews/tvseries/:id - review for tv series
+* /reviews/form - movie reviews form
+* /reviews/tvseries/form - tv series review form
 
 There is one bug with my authentication.  I have not set up Firestore so each user has the same favourites and watchlist.  I basically ran out of time before I could implement this.  
-
-
-
-
 
 ## Support
 20095610@mail.wit.ie
@@ -243,7 +241,7 @@ Features I would like to include in the future :
 
 * Firestore to store user data so each user's favourites and watchlist is unique
 * More features to enhance the app.  Eg : Trailers, more actor / movie / tv series metadata.
-* Improve on the appearance of the login and register forms
+* Improve on the appearance of the login, register and reset password forms
 * Additional storybook components
 * Pagination
 
@@ -256,8 +254,8 @@ Storybook support for testing components.
 
 ## Authors and acknowledgment
 Margaret McCarthy - Higher Diploma in Computer Science 2021, SETU
-Diarmuid O'Connor - Lecturer of ICT2 Skills
+Base Code : Diarmuid O'Connor - Lecturer of ICT2 Skills, SETU
 
 ## Project status
-Development has ceased at present as this was an assignment for ICT2 Skills.  
+Development has ceased at present.  
 

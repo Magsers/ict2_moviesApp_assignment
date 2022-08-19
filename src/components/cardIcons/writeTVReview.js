@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const WriteTVReview = ({ tv }) => {
   return (
     <Link
-      to={'/reviews/tv/form'}
+      to={'/reviews/tvseries/form'}
       state={{
           tvId: tv.id,
         }}

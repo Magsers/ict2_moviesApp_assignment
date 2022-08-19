@@ -91,7 +91,7 @@ const App = () => {
                 }
               />
               <Route
-                path="/reviews/tv/form"
+                path="/reviews/tvseries/form"
                 element={
                   <ProtectedRoute>
                     <AddTVReviewPage />

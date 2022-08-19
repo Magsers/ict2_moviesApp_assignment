@@ -187,6 +187,52 @@ Discover TV Series page.  Cache support and navigational arrows.
 
 ## Component catalogue
 
+Storybook support for components listed below.   
+
+![][storybook]
+
+[storybook]: /public/assets/storybook.PNG
+
+## Caching
+
+List of pages that are supported with cache
+
+* Discover movies 
+* Movie details
+* Favourites
+* Must Watch
+* Upcoming
+* Top Rated
+* TV Series
+* TV Series Details 
+* Cast Page
+* Actor Details
+
+![][cache]
+
+[cache]: /public/assets/cache.PNG
+
+## Authentication
+
+First I initialised a basic authentication using a fakeAuth to validate the token.  If the user clicks on a protected route which was either favourites or must watch movies then the user would be redirected to a login page and asked to authenticate.  Using the fakeAuth the user was authenticated and then the user is redirected to the location they were at.
+
+I then refactored my code to use Firebase authentication.  I created the project in Firebase and downloaded an api key which is stored in my .env file.  I then created a firebase.js file which is used to communicate with the firebase api using the api key variable.  This file stores the methods to authenticate the app including login, register and resetting your password.
+
+I added routes to my index.js file for the new login, logout, register with email and password and reset password pages and form components for each of these pages.  
+
+Finally I added some links in my siteHeader component in order to display Login or Register options if the user was not authenticated and a logout option if they were and also diplaying the user's email address.
+
+The protected routes are :
+
+* favourites
+* mustWatch
+* reviews for movies
+* review for tv series
+
+There is one bug with my authentication.  I have not set up Firestore so each user has the same favourites and watchlist.  I basically ran out of time before I could implement this.  
+
+
+
 
 
 ## Support

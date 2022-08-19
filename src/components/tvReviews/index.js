@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 export default function TVReviews({ tv }) {
   const classes = useStyles();
   const [reviews, setReviews] = useState([]);
-
+  console.log(tv.id)
   useEffect(() => {
     getTVReviews(tv.id).then((reviews) => {
       setReviews(reviews);
@@ -47,7 +47,7 @@ export default function TVReviews({ tv }) {
               <TableCell >{excerpt(r.content)}</TableCell>
               <TableCell >
                 <Link
-                  to={`/reviews/${r.id}`}
+                  to={`/reviews/tvseries/${r.id}`}
                   state={{
                     review: r,
                     tv: tv,

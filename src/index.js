@@ -11,6 +11,7 @@ import CastTVPage from "./pages/castTVPage";
 import FavouritesPage from "./pages/favouritesPage";
 import MustWatchMoviesPage from "./pages/mustWatchPage";
 import MovieReviewPage from "./pages/movieReviewPage";
+import TVReviewPage from "./pages/tvReviewPage";
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import TopRatedMoviesPage from "./pages/topRatedMoviesPage";
 import SiteHeader from "./components/siteHeader";
@@ -44,6 +45,11 @@ const App = () => {
         <MoviesContextProvider>
           <TVContextProvider>
             <Routes>
+              <Route path="/movies" element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+              <Route path="/movies/:id" element={<MoviePage />} />
+              <Route path="/tvseries/:id" element={<TVDetailsPage />} />
               <Route
                 path="/favourites"
                 element={
@@ -60,19 +66,43 @@ const App = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/movies" element={<HomePage />} />
-              <Route path="/" element={<HomePage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-              <Route path="/movies/:id" element={<MoviePage />} />
-              <Route path="/tvseries/:id" element={<TVDetailsPage />} />
-              <Route path="/reviews/:id" element={<MovieReviewPage />} />
+              <Route
+                path="/reviews/:id"
+                element={
+                  <ProtectedRoute>
+                    <MovieReviewPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/reviews/tvseries/:id"
+                element={
+                  <ProtectedRoute>
+                    <TVReviewPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/reviews/form"
+                element={
+                  <ProtectedRoute>
+                    <AddMovieReviewPage />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/reviews/tv/form"
+                element={
+                  <ProtectedRoute>
+                    <AddTVReviewPage />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="/actor/:id" element={<ActorPage />} />
               <Route path="/cast/:id/:str" element={<CastPage />} />
               <Route path="/cast/:id" element={<CastTVPage />} />
               <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
               <Route path="/movies/toprated" element={<TopRatedMoviesPage />} />
-              <Route path="/reviews/form" element={<AddMovieReviewPage />} />
-              <Route path="/reviews/tv/form" element={<AddTVReviewPage />} />
               <Route path="/tvseries" element={<TVSeriesPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />

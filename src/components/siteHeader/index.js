@@ -45,17 +45,10 @@ const SiteHeader = () => {
   const [user] = useAuthState(auth);
   const classes = useStyles();
   const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (loading) return;
-  //   if (!user) return navigate("/");
-  // }, [user, loading, navigate]);
-
   const [anchorEl, setAnchorEl] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  // const { token, signout } = useContext(AuthContext);
-
+  
   const open = Boolean(anchorEl);
   const menuOptions = [
     { label: "Movies", path: "/movies" },
@@ -64,7 +57,6 @@ const SiteHeader = () => {
     { label: "Upcoming", path: "/movies/upcoming" },
     { label: "Top Rated", path: "/movies/toprated" },
     { label: "TV Series", path: "/tvseries" },
-    // { label: "Sign Out", path: "/logout" },
   ];
 
   const handleMenuSelect = (pageURL) => {

@@ -54,7 +54,7 @@ function RegisterForm() {
     <Box component="form" className={classes.root}>
      
     <Typography component="h2" variant="h3">
-      Reister
+      Register
     </Typography>
 
     <div className="flex pt-6">

@@ -185,6 +185,8 @@ Discover TV Series page.  Cache support and navigational arrows.
 
 [tvSeries]: /public/assets/tvSeries.PNG
 
+## Component catalogue
+
 
 
 ## Support

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { auth, sendPasswordReset } from "../../../firebase";
 import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,58 +27,71 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   snack: {
-     width: "50%",
-     "& > * ": {
-       width: "100%",
-     },
-   },
+    width: "50%",
+    "& > * ": {
+      width: "100%",
+    },
+  },
 }));
 
 function ResetPasswordForm() {
-  const classes = useStyles();    
+  const classes = useStyles();
   const [email, setEmail] = useState("");
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+  
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/reset", { replace: true });
   }, [user, loading, navigate]);
+ 
   return (
     <Box component="form" className={classes.root}>
-    <div className="flex pt-6">
-      <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
-        <div className="card-header">
-          <h2 className="text-3xl">Reset Password</h2>
-        </div>
-        <div className="card-body">
-          <div className="form-control">
-            <label className="label">
-              <span className="label-text">Email</span>
-            </label>
-            <input
-              type="text"
-              className="input input-bordered"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="E-mail Address"
-            />
+      <Typography component="h2" variant="h3">
+        Reset Password
+      </Typography>
+      <div className="flex pt-6">
+        <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
+          <div className="card-header">
+          <h2
+              className="text-3xl"
+              style={{ paddingTop: 60, fontFamily: "Verdana", color: "blue" }}
+            >
+              Reset Password
+            </h2>
           </div>
-          <button
-            className="btn btn-primary w-full"
-            onClick={() => sendPasswordReset(email)}
-          >
-            Send password reset Email
-          </button>
-          <div className="justify-end">
-            Don't have an account?{" "}
-            <Link to="/register" className="link">
-              Register now
-            </Link>
-            .
+          <div className="card-body">
+            <div className="form-control">
+              <label className="label" style={{ paddingRight: 50 }}>
+                <span className="label-text">Email</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="E-mail Address"
+              />
+            </div>
+            <br></br>
+            <button
+              className="btn btn-primary w-full"
+              onClick={() => sendPasswordReset(email)}
+            >
+              Send password reset Email
+            </button>
+            <br></br>
+            <br></br>
+            <div className="justify-end">
+              Don't have an account?{" "}
+              <Link to="/register" className="link">
+                Register now
+              </Link>
+              .
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </Box>
   );
 }

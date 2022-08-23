@@ -6,7 +6,6 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
 // import Typography from "@material-ui/core/Typography";
-
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(2),
@@ -33,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }));
-
 function LoginForm() {
   const classes = useStyles();
   const [email, setEmail] = useState("");
@@ -44,22 +42,25 @@ function LoginForm() {
     logInWithEmailAndPassword(email, password);
     if (user) navigate("/movies", { replace: true });
   };
-
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/movies", { replace: true });
   }, [loading, navigate, user]);
-
   return (
     <Box component="form" className={classes.root}>
       <div className="flex pt-6">
         <div className="card shadow-2xl bg-base-200 flex-1 justify-center p-12">
           <div className="card-header">
-            <h2 className="text-3xl">Login</h2>
+            <h2
+              className="text-3xl"
+              style={{ paddingTop: 60, fontFamily: "Verdana", color: "blue" }}
+            >
+              Login
+            </h2>
           </div>
           <div className="card-body">
             <div className="form-control">
-              <label className="label">
+              <label className="label" style={{ paddingRight: 50 }}>
                 <span className="label-text">Email</span>
               </label>
               <input
@@ -70,8 +71,9 @@ function LoginForm() {
                 placeholder="E-mail Address"
               />
             </div>
+            <br></br>
             <div className="form-control">
-              <label className="label">
+              <label className="label" style={{ paddingRight: 26 }}>
                 <span className="label-text">Password</span>
               </label>
               <input
@@ -82,6 +84,7 @@ function LoginForm() {
                 placeholder="Password"
               />
             </div>
+            <br></br>
             <Button
               variant="outlined"
               size="medium"
@@ -92,10 +95,12 @@ function LoginForm() {
               Log in
             </Button>
             <div>
+              <br></br>
               <Link to="/reset" className="btn btn-ghost w-full">
                 Forgot Password
               </Link>
             </div>
+            <br></br>
             <div className="justify-end">
               Don't have an account?{" "}
               <Link to="/register" className="link">
@@ -109,5 +114,4 @@ function LoginForm() {
     </Box>
   );
 }
-
 export default LoginForm;
